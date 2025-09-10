@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservaYa", "ReservaYa\ReservaYa.csproj", "{BA7B915C-63F5-4F7F-B945-5FF2B5A33B60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservaYa", "ReservaYa\ReservaYa.csproj", "{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BA7B915C-63F5-4F7F-B945-5FF2B5A33B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA7B915C-63F5-4F7F-B945-5FF2B5A33B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA7B915C-63F5-4F7F-B945-5FF2B5A33B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA7B915C-63F5-4F7F-B945-5FF2B5A33B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {51ED9F5D-E3C1-46AA-B127-66D312162D74}
+		SolutionGuid = {BFAC8455-E74A-44C3-A386-77346176D8A1}
 	EndGlobalSection
 EndGlobal

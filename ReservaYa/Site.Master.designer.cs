@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Eval1Unid1Practica_4._8
+namespace ReservaYa
 {
 
 

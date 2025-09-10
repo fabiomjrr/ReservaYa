@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Eval1Unid1Practica_4._8.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ReservaYa.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -6,8 +6,6 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <!-- Calendar Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.4.1/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-NlsxdkweGA8nr9s0TVc3Qu2zqhWMNsHrvzMpAjVR0yDqXgC2z+RWYoeCNG2uO2MC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
 
@@ -42,15 +40,18 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">UniSpaces</a>
+                <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>                                                
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pruebas">Registro</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ReservarLabs.aspx">Haz tu reserva</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Categoria.aspx">Categoría</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/LoginReservaYa.aspx">Iniciar Sesión</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/RegistroReservaYa.aspx">Crear cuenta nueva</a></li>
                     </ul>
                 </div>
             </div>

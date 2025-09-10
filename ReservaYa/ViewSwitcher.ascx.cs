@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls.Resolvers;
 
-namespace Eval1Unid1Practica_4._8
+namespace ReservaYa
 {
     public partial class ViewSwitcher : System.Web.UI.UserControl
     {

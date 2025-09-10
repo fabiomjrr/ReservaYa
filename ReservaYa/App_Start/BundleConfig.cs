@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Optimization;
 using System.Web.UI;
 
-namespace Eval1Unid1Practica_4._8
+namespace ReservaYa
 {
     public class BundleConfig
     {

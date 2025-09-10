@@ -5,14 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Eval1Unid1Practica_4._8
+namespace ReservaYa
 {
     public partial class _Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+            
         }
     }
 }

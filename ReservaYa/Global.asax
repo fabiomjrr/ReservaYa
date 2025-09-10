@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Eval1Unid1Practica_4._8.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ReservaYa.Global" Language="C#" %>

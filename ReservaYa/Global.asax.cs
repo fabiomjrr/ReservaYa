@@ -7,7 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace Eval1Unid1Practica_4._8
+namespace ReservaYa
 {
     public class Global : HttpApplication
     {
