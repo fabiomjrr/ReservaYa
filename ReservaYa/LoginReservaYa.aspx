@@ -4,7 +4,7 @@
         <div class="form-box">
             <h2>
              <img src="Content/Img/ReservaYaLogo.png" alt="ReservaYaLogo" style="height:277px; vertical-align:middle; margin-right:10px; margin-left: 0px; width: 323px;" />
-             Iniciar sesion
+             Iniciar Sesión
             </h2>
 
             <asp:Label ID="lblEmail" runat="server" Text="Correo Electrónico:" AssociatedControlID="txtEmail"></asp:Label><br />

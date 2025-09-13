@@ -5,137 +5,113 @@
     
     <!-- Area de HTML -->
     <main>
-        <section class="banner">
-    <h1>BIENVENIDOS</h1>
-    <p>Gestiona tus reservas de manera eficiente</p>
-     <!-- <a href="Pruebas.aspx" class="btn-crear">Ver más &raquo;</a>
-    <a href="Pruebas.aspx" class="btn-contactanos">Contactanos &raquo;</a> -->
-</section>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="contenido-hero">
+            <h2>Reserva Inteligente,  <span>Espacios Eficientes</span></h2>
+            <p>Gestiona aulas, laboratorios y más con precisión. Controla disponibilidad por día y hora, optimiza el uso de tus espacios y accede a reportes detallados en tiempo real.</p>
+            <a class="btn btn-primary" href="/ReservarLabs.aspx">VER</a>
+        </div>
+    </section>
+        <!-- Fin Hero -->
 
-    <h2>Galería</h2>
-     <div class ="container">
-        <div class="row">
-            <div class ="rounded float-center" style="width:600px; height:400px;">
-                <asp:Image ID="Image1" runat="server" class="rounded float-end" ImageUrl="Content/Img/estadio.jpg" />
-            </div>
-            <div class ="rounded float-center" style="width:600px; height:400px;">
-                <asp:Image ID="Image2" runat="server" class="rounded float-end" ImageUrl="Content/Img/Lab.jpg" />
-            </div>
+    <!-- Galería -->
+    <h2 class="text-center my-4" id="galeria1">Galería de Espacios</h2>
 
-            <div class ="rounded float-right" style="width:600px; height:400px;">
-                <asp:Image ID="Image3" runat="server" class="rounded float-end" ImageUrl="Content/Img/auditorio.jpg" />
-            </div>
-            <div class ="rounded float-right" style="width:600px; height:400px;">
-                <asp:Image ID="Image4" runat="server" class="rounded float-end" ImageUrl="Content/Img/classroom.jpg" />
-            </div>
+    <div class="galeria">
+        
+        <div class="item">
+            <asp:Image ID="Image2" runat="server" ImageUrl="Content/Img/Lab.jpg" CssClass="img-fluid rounded shadow" />
+            <p>Laboratorios</p>
+        </div>
+        
+        <div class="item">
+            <asp:Image ID="Image4" runat="server" ImageUrl="Content/Img/classroom.jpg" CssClass="img-fluid rounded shadow" />
+            <p>Aulas y Salones</p>
         </div>
     </div>
+        <!-- Fin Galería -->
 
-<div class="row">
-    <div class="col tarea-card">
-        <h3>Tareas Pendientes</h3>
-        <asp:GridView ID="gv_TareasP" runat="server" CssClass="table" AutoGenerateColumns="false"></asp:GridView>
-    </div>
-    <div class="col tarea-card">
-        <h3>Tareas Terminadas</h3>
-        <asp:GridView ID="gv_TareasT" runat="server" CssClass="table" AutoGenerateColumns="false"></asp:GridView>
-    </div>
+        <!-- Sobre nosotros -->
+    <section class="hero1">
+        <div class="contenido-hero">
+            <h2>SOBRE <span>NOSOTROS</span></h2>
+            <img src="Content/Img/logo_compan.png"/>
+            <p>En DEVELO₱ERS nos especializamos en la gestión eficiente de espacios académicos como aulas de clases y laboratorios. Nuestro sistema permite administrar reservas por día y hora, controlar la disponibilidad en tiempo real y generar reportes detallados de uso, facilitando la toma de decisiones y optimizando el aprovechamiento de cada espacio.</p>
+            <a class="btn btn-primary" href="#galeria1">VER</a>
+        </div>
+    </section>
+        <!-- Fin sección sobre nosotros -->
+    
+</main>
 
-</div>
-    </main>
+<!-- Estilo CSS Embebido -->
+<style>
+/* Galería */
+.galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.galeria .item {
+    text-align: center;
+}
+.galeria p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+@media (min-width: 768px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-    <!-- Estilo CSS Embebido -->
-    <style>
-        * {
-          box-sizing: border-box;
-        }
+/* Hero */
+.hero {
+    background-image: url('Content/Img/Fondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 425px;
+    position: relative;
+    margin-bottom: 3rem;
+}
 
-        /* Wrapping element */
-        /* Hoja de estilos para Default, homepage.*/
-        .body-content {
-            margin-top: 15px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+.hero1 {
+    background-image: url('Content/Img/background.png');
+    background-size: cover;
+    background-position: center;
+    height: 425px;
+    position: relative;
+    margin-bottom: 3rem;
+}
+.contenido-hero {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 65%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+.contenido-hero h2 {
+    color: #fff;
+    font-size: 2.5rem;
+}
+.contenido-hero span {
+    color: #0d6efd; /* azul Bootstrap */
+}
+.contenido-hero p {
+    color: #e0e0e0;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+</style>
 
-        input,
-        select,
-        textarea {
-            max-width: 280px;
-        }
-
-        .banner {
-            background-color: #007bff;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .btn-crear {
-            background-color: #ffffff;
-            color: #007bff;
-            border: 2px solid #007bff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-            .btn-crear:hover {
-                background-color: #007bff;
-                color: white;
-            }
-
-        .calendario-box h2 {
-            color: #007bff;
-            margin-bottom: 15px;
-        }
-
-        .tarea-card {
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-            .tarea-card h3 {
-                margin-bottom: 10px;
-                color: #333;
-            }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-            .table th,
-            .table td {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-
-            .table th {
-                background-color: #f2f2f2;
-                color: #333;
-            }
-
-        @media screen and (min-width: 768px) {
-            .body-content {
-                padding: 0;
-            }
-
-            .row {
-                display: flex;
-                gap: 20px;
-            }
-
-            .col {
-                flex: 1;
-            }
-        }
-    </style>
 
 
 </asp:Content>

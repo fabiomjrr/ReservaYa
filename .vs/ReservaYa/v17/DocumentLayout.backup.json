@@ -1,30 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\",
+  "WorkspaceRootPath": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|c:\\users\\galli\\files\\documentos\\proyectos\\reservaya\\reservaya\\reservaya\\reservarlabs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\reservarlabs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|c:\\users\\galli\\files\\documentos\\proyectos\\reservaya\\reservaya\\reservaya\\reservarlabs.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\reservarlabs.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|c:\\users\\galli\\files\\documentos\\proyectos\\reservaya\\reservaya\\reservaya\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|c:\\users\\galli\\files\\documentos\\proyectos\\reservaya\\reservaya\\reservaya\\categoria.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\categoria.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|c:\\users\\galli\\files\\documentos\\proyectos\\reservaya\\reservaya\\reservaya\\categoria.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\categoria.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\reservaya\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|c:\\users\\galli\\files\\documentos\\proyectos\\reservaya_1.4\\reservaya\\reservaya\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\loginreservaya.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\loginreservaya.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\services\\espacioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\services\\espacioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\reservarlabs.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\reservarlabs.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\reservarlabs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\reservarlabs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\reservaya\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{C4760B28-C3F9-4C17-A1D9-74C75070CEB9}|ReservaYa\\ReservaYa.csproj|solutionrelative:reservaya\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,85 +42,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Categoria.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Categoria.aspx.cs",
-              "RelativeDocumentMoniker": "ReservaYa\\Categoria.aspx.cs",
-              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Categoria.aspx.cs",
-              "RelativeToolTip": "ReservaYa\\Categoria.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T03:40:40.41Z",
-              "EditorCaption": ""
+              "DocumentIndex": 6,
+              "Title": "ReservarLabs.aspx",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\ReservarLabs.aspx",
+              "RelativeDocumentMoniker": "ReservaYa\\ReservarLabs.aspx",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\ReservarLabs.aspx",
+              "RelativeToolTip": "ReservaYa\\ReservarLabs.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-11T15:21:46.161Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Categoria.aspx",
-              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Categoria.aspx",
-              "RelativeDocumentMoniker": "ReservaYa\\Categoria.aspx",
-              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Categoria.aspx",
-              "RelativeToolTip": "ReservaYa\\Categoria.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-10T03:39:12.083Z",
-              "EditorCaption": ""
+              "DocumentIndex": 5,
+              "Title": "ReservarLabs.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\ReservarLabs.aspx.cs",
+              "RelativeDocumentMoniker": "ReservaYa\\ReservarLabs.aspx.cs",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\ReservarLabs.aspx.cs",
+              "RelativeToolTip": "ReservaYa\\ReservarLabs.aspx.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwBwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T15:11:22.746Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Default.aspx",
-              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Default.aspx",
-              "RelativeDocumentMoniker": "ReservaYa\\Default.aspx",
-              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Default.aspx",
-              "RelativeToolTip": "ReservaYa\\Default.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-10T03:37:41.709Z",
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Web.config",
+              "RelativeDocumentMoniker": "ReservaYa\\Web.config",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Web.config",
+              "RelativeToolTip": "ReservaYa\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-11T22:50:30.789Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginReservaYa.aspx",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\LoginReservaYa.aspx",
+              "RelativeDocumentMoniker": "ReservaYa\\LoginReservaYa.aspx",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\LoginReservaYa.aspx",
+              "RelativeToolTip": "ReservaYa\\LoginReservaYa.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-11T21:14:21.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "favicon.ico -  [Spanish (Mexico)] - Icon [16x16, 32 bit, BMP]",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\favicon.ico",
+              "RelativeDocumentMoniker": "ReservaYa\\favicon.ico",
+              "ToolTip": "C:\\Users\\galli\\Files\\Downloads\\ReservaYa_v1.2-Jonathan\\ReservaYa_v1.1-Jonathan\\ReservaYa\\ReservaYa\\ReservaYa\\favicon.ico -  [Spanish (Mexico)] - Icon [16x16, 32 bit, BMP]",
+              "RelativeToolTip": "..\\..\\..\\..\\Downloads\\ReservaYa_v1.2-Jonathan\\ReservaYa_v1.1-Jonathan\\ReservaYa\\ReservaYa\\ReservaYa\\favicon.ico -  [Spanish (Mexico)] - Icon [16x16, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-09-11T20:44:07.684Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ReservarLabs.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\ReservarLabs.aspx.cs",
-              "RelativeDocumentMoniker": "ReservaYa\\ReservarLabs.aspx.cs",
-              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\ReservarLabs.aspx.cs",
-              "RelativeToolTip": "ReservaYa\\ReservarLabs.aspx.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowD0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T03:36:53.051Z",
+              "Title": "Site.Master",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Site.Master",
+              "RelativeDocumentMoniker": "ReservaYa\\Site.Master",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Site.Master",
+              "RelativeToolTip": "ReservaYa\\Site.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-11T17:56:29.509Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReservarLabs.aspx",
-              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\ReservarLabs.aspx",
-              "RelativeDocumentMoniker": "ReservaYa\\ReservarLabs.aspx",
-              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\ReservarLabs.aspx",
-              "RelativeToolTip": "ReservaYa\\ReservarLabs.aspx",
+              "Title": "Default.aspx",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Default.aspx",
+              "RelativeDocumentMoniker": "ReservaYa\\Default.aspx",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Default.aspx",
+              "RelativeToolTip": "ReservaYa\\Default.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-10T03:36:25.382Z",
+              "WhenOpened": "2025-09-11T17:44:07.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Site.Master",
-              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Site.Master",
-              "RelativeDocumentMoniker": "ReservaYa\\Site.Master",
-              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa\\ReservaYa\\ReservaYa\\Site.Master",
-              "RelativeToolTip": "ReservaYa\\Site.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-10T02:28:39.145Z",
-              "EditorCaption": ""
+              "DocumentIndex": 4,
+              "Title": "EspacioService.cs",
+              "DocumentMoniker": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Services\\EspacioService.cs",
+              "RelativeDocumentMoniker": "ReservaYa\\Services\\EspacioService.cs",
+              "ToolTip": "C:\\Users\\galli\\Files\\Documentos\\Proyectos\\ReservaYa_1.4\\ReservaYa\\ReservaYa\\Services\\EspacioService.cs",
+              "RelativeToolTip": "ReservaYa\\Services\\EspacioService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA6wBsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T15:13:24.707Z"
             }
           ]
         }
