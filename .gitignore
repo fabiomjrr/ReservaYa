@@ -1,0 +1,47 @@
+# Archivos de usuario de Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de compilación
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Tt]emp/
+
+# Paquetes de NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Archivos de publicación
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Archivos generados por IIS / ASP.NET
+App_Data/
+*.dbmdl
+*.bak
+*.mdf
+*.ldf
+
+# Archivos temporales
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+*.scc
+
+# Archivos de configuración sensibles (opcional)
+web.config
+appsettings.json
+appsettings.Development.json
+
+# Archivos de usuario locales
+*.swp
+*.DS_Store
+Thumbs.db
