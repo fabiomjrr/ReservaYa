@@ -45,3 +45,4 @@ appsettings.Development.json
 *.swp
 *.DS_Store
 Thumbs.db
+.vs/ReservaYa/v17/DocumentLayout.backup.json
