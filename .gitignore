@@ -46,3 +46,5 @@ appsettings.Development.json
 *.DS_Store
 Thumbs.db
 .vs/ReservaYa/v17/DocumentLayout.backup.json
+.vs/ReservaYa/v17/.suo
+/ReservaYa/obj/Debug
