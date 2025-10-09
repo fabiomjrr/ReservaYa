@@ -14,6 +14,11 @@ namespace ReservaYa.Controllers
     {
         // GET: GestionEspacios
         private readonly DEVELOSERSEntities db = new DEVELOSERSEntities();
+
+        public ActionResult Homepage()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             List<Espacios> todos = db.Espacios.ToList();

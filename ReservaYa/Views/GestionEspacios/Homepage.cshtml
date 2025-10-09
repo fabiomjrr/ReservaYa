@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Homepage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="hero">
+    <div class="contenido-hero">
+        <h2>Reserva Inteligente,  <span>Espacios Eficientes</span></h2>
+        <p>Gestiona aulas, laboratorios y más con precisión. Controla disponibilidad por día y hora, optimiza el uso de tus espacios y accede a reportes detallados en tiempo real.</p>
+        <a class="btn btn-primary" href="/ReservarLabs.aspx">VER</a>
+    </div>
+</section>
+
+
+    <!-- GALERIA -->
+    <h2 class="text-center my-4" id="galeria1">Galería de Espacios</h2>
+
+    <div class="galeria">
+
+        <div class="item">
+            <img id="Image2" src="https://media.discordapp.net/attachments/1425679715661910132/1425681348118446080/Lab.jpg?ex=68e878b9&is=68e72739&hm=9c476c29ba25e70c1f23813fecb1fa57e871335974428e62f5c20253ab1a9f3a&=&format=webp" class=="img-fluid rounded shadow"/>
+            <p>Laboratorios</p>
+        </div>
+
+        <div class="item">
+            <img id="Image2" src="https://media.discordapp.net/attachments/1425679715661910132/1425681350123589727/classroom.jpg?ex=68e878b9&is=68e72739&hm=ec6ad8db670fa6c03427c63b9d7e866204a8dc45c6baf9740554dceb3d3337de&=&format=webp" class= ="img-fluid rounded shadow" />
+            <p>Aulas y Salones</p>
+        </div>
+    </div>
+    <!-- Fin Galería -->
+    <!-- Sobre nosotros -->
+    <section class="hero1">
+        <div class="contenido-hero">
+            <h2>SOBRE <span>NOSOTROS</span></h2>
+            <img src="https://media.discordapp.net/attachments/1425679715661910132/1425681348449931324/logo_compan.png?ex=68e878b9&is=68e72739&hm=7ea31bb10473268308acfdce85663c2ca81a47d95f0d62ac0db7e73dc9854efe&=&format=webp&quality=lossless" />
+            <p>En DEVELO₱ERS nos especializamos en la gestión eficiente de espacios académicos como aulas de clases y laboratorios. Nuestro sistema permite administrar reservas por día y hora, controlar la disponibilidad en tiempo real y generar reportes detallados de uso, facilitando la toma de decisiones y optimizando el aprovechamiento de cada espacio.</p>
+            <a class="btn btn-primary" href="#galeria1">VER</a>
+        </div>
+    </section>
+    <!-- Fin sección sobre nosotros -->
+</main>
+
+<!-- Estilo CSS Embebido -->
+<style>
+/* Galería */
+.galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.galeria .item {
+    text-align: center;
+}
+.galeria p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+@@media (min-width: 768px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Hero */
+    .hero {
+        background-image: url('https://media.discordapp.net/attachments/1425679715661910132/1425681351050268692/Fondo.jpeg?ex=68e878b9&is=68e72739&hm=61b4c64e6bea38f8b475616c43399ce558ac98299402467736b967c86947a79a&=&format=webp&width=1520&height=856');
+        background-size: cover;
+        background-position: center;
+        height: 425px;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .hero1 {
+       background-image: url('https://media.discordapp.net/attachments/1425679715661910132/1425681349796429934/background.png?ex=68e878b9&is=68e72739&hm=1fa8ebcf428d47af9b6b810bb940c37d5b99485627fac2cf510b5ac511cceaff&=&format=webp&quality=lossless&width=1768&height=608');
+        background-size: cover;
+        background-position: center;
+        height: 425px;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+.contenido-hero {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 65%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+.contenido-hero h2 {
+    color: #fff;
+    font-size: 2.5rem;
+}
+.contenido-hero span {
+    color: #0d6efd; /* azul Bootstrap */
+}
+.contenido-hero p {
+    color: #e0e0e0;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+</style>
