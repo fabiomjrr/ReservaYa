@@ -250,6 +250,7 @@
     <Content Include="Views\GestionEspacios\CreateAddImages.cshtml" />
     <Content Include="Views\GestionEspacios\Update.cshtml" />
     <Content Include="Views\GestionEspacios\Delete.cshtml" />
+    <Content Include="Views\GestionEspacios\Vacia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
