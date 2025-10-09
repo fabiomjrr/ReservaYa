@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3b27c91df5344168a08fa37f3ef7e7e" Name="Diagram1">
+        <EntityTypeShape EntityType="DevelosersModel.Categorias" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.Espacios" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.EspaciosDetalles" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.FechasDisponibles" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.FechasOcupadas" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.Reservas" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.ReservasFechasDisponibles" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.Roles" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevelosersModel.Usuarios" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="DevelosersModel.FK_Espacios_Categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_EspaciosDetalles_Espacios" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_ReservasFechasDisponibles_Espacios" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_ReservasFechasDisponibles_FechasDisponibles" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_Reservas_FechasOcupadas" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_Reservas_ReservasFechasDisponibles" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_Reservas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DevelosersModel.FK_Usuarios_Rol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

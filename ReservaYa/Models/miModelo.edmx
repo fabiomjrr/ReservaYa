@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DevelosersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Espacios">
+          <Key>
+            <PropertyRef Name="EspacioID" />
+          </Key>
+          <Property Name="EspacioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoriaID" Type="int" Nullable="false" />
+          <Property Name="Capacidad" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="UbicacionEnlace" Type="nvarchar(max)" />
+          <Property Name="Estacionamiento" Type="bit" Nullable="false" />
+          <Property Name="Sanitarios" Type="bit" Nullable="false" />
+          <Property Name="AccesoSillaRuedas" Type="bit" Nullable="false" />
+          <Property Name="ImagenPrev" Type="nvarchar(max)" />
+          <Property Name="Disponible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EspaciosDetalles">
+          <Key>
+            <PropertyRef Name="EspacioDetalleID" />
+          </Key>
+          <Property Name="EspacioDetalleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValorPorHora" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="EspacioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FechasDisponibles">
+          <Key>
+            <PropertyRef Name="FechaDisponibleID" />
+          </Key>
+          <Property Name="FechaDisponibleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="HoraFin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Disponible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FechasOcupadas">
+          <Key>
+            <PropertyRef Name="FechaOcupadaID" />
+          </Key>
+          <Property Name="FechaOcupadaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="HoraFin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ReservaID" />
+          </Key>
+          <Property Name="ReservaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MontoTotal" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="UsuarioID" Type="int" Nullable="false" />
+          <Property Name="FechaOcupadaID" Type="int" />
+          <Property Name="ReservaFechaID" Type="int" />
+        </EntityType>
+        <EntityType Name="ReservasFechasDisponibles">
+          <Key>
+            <PropertyRef Name="ReservaFechaID" />
+          </Key>
+          <Property Name="ReservaFechaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EspacioID" Type="int" Nullable="false" />
+          <Property Name="FechaDisponibleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="Correo" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Contrasena" Type="varbinary" MaxLength="64" Nullable="false" />
+          <Property Name="RolID" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Espacios_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Espacios" Type="Self.Espacios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Espacios">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspaciosDetalles_Espacios">
+          <End Role="Espacios" Type="Self.Espacios" Multiplicity="1" />
+          <End Role="EspaciosDetalles" Type="Self.EspaciosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espacios">
+              <PropertyRef Name="EspacioID" />
+            </Principal>
+            <Dependent Role="EspaciosDetalles">
+              <PropertyRef Name="EspacioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_FechasOcupadas">
+          <End Role="FechasOcupadas" Type="Self.FechasOcupadas" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FechasOcupadas">
+              <PropertyRef Name="FechaOcupadaID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="FechaOcupadaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_ReservasFechasDisponibles">
+          <End Role="ReservasFechasDisponibles" Type="Self.ReservasFechasDisponibles" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReservasFechasDisponibles">
+              <PropertyRef Name="ReservaFechaID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="ReservaFechaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="UsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservasFechasDisponibles_Espacios">
+          <End Role="Espacios" Type="Self.Espacios" Multiplicity="1" />
+          <End Role="ReservasFechasDisponibles" Type="Self.ReservasFechasDisponibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espacios">
+              <PropertyRef Name="EspacioID" />
+            </Principal>
+            <Dependent Role="ReservasFechasDisponibles">
+              <PropertyRef Name="EspacioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservasFechasDisponibles_FechasDisponibles">
+          <End Role="FechasDisponibles" Type="Self.FechasDisponibles" Multiplicity="1" />
+          <End Role="ReservasFechasDisponibles" Type="Self.ReservasFechasDisponibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FechasDisponibles">
+              <PropertyRef Name="FechaDisponibleID" />
+            </Principal>
+            <Dependent Role="ReservasFechasDisponibles">
+              <PropertyRef Name="FechaDisponibleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Rol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_CrearUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombres" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="nvarchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contrasena" Type="nvarchar" Mode="In" />
+          <Parameter Name="RolID" Type="int" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contrasena" Type="nvarchar" Mode="In" />
+          <Parameter Name="Clave" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DevelosersModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Espacios" EntityType="Self.Espacios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EspaciosDetalles" EntityType="Self.EspaciosDetalles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FechasDisponibles" EntityType="Self.FechasDisponibles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FechasOcupadas" EntityType="Self.FechasOcupadas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReservasFechasDisponibles" EntityType="Self.ReservasFechasDisponibles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Espacios_Categorias" Association="Self.FK_Espacios_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Espacios" EntitySet="Espacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspaciosDetalles_Espacios" Association="Self.FK_EspaciosDetalles_Espacios">
+            <End Role="Espacios" EntitySet="Espacios" />
+            <End Role="EspaciosDetalles" EntitySet="EspaciosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_FechasOcupadas" Association="Self.FK_Reservas_FechasOcupadas">
+            <End Role="FechasOcupadas" EntitySet="FechasOcupadas" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_ReservasFechasDisponibles" Association="Self.FK_Reservas_ReservasFechasDisponibles">
+            <End Role="ReservasFechasDisponibles" EntitySet="ReservasFechasDisponibles" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_Usuarios" Association="Self.FK_Reservas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservasFechasDisponibles_Espacios" Association="Self.FK_ReservasFechasDisponibles_Espacios">
+            <End Role="Espacios" EntitySet="Espacios" />
+            <End Role="ReservasFechasDisponibles" EntitySet="ReservasFechasDisponibles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservasFechasDisponibles_FechasDisponibles" Association="Self.FK_ReservasFechasDisponibles_FechasDisponibles">
+            <End Role="FechasDisponibles" EntitySet="FechasDisponibles" />
+            <End Role="ReservasFechasDisponibles" EntitySet="ReservasFechasDisponibles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Rol" Association="Self.FK_Usuarios_Rol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DevelosersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Espacios" Relationship="Self.FK_Espacios_Categorias" FromRole="Categorias" ToRole="Espacios" />
+        </EntityType>
+        <EntityType Name="Espacios">
+          <Key>
+            <PropertyRef Name="EspacioID" />
+          </Key>
+          <Property Name="EspacioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoriaID" Type="Int32" Nullable="false" />
+          <Property Name="Capacidad" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UbicacionEnlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Estacionamiento" Type="Boolean" Nullable="false" />
+          <Property Name="Sanitarios" Type="Boolean" Nullable="false" />
+          <Property Name="AccesoSillaRuedas" Type="Boolean" Nullable="false" />
+          <Property Name="ImagenPrev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_Espacios_Categorias" FromRole="Espacios" ToRole="Categorias" />
+          <NavigationProperty Name="EspaciosDetalles" Relationship="Self.FK_EspaciosDetalles_Espacios" FromRole="Espacios" ToRole="EspaciosDetalles" />
+          <NavigationProperty Name="ReservasFechasDisponibles" Relationship="Self.FK_ReservasFechasDisponibles_Espacios" FromRole="Espacios" ToRole="ReservasFechasDisponibles" />
+        </EntityType>
+        <EntityType Name="EspaciosDetalles">
+          <Key>
+            <PropertyRef Name="EspacioDetalleID" />
+          </Key>
+          <Property Name="EspacioDetalleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValorPorHora" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="EspacioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Espacios" Relationship="Self.FK_EspaciosDetalles_Espacios" FromRole="EspaciosDetalles" ToRole="Espacios" />
+        </EntityType>
+        <EntityType Name="FechasDisponibles">
+          <Key>
+            <PropertyRef Name="FechaDisponibleID" />
+          </Key>
+          <Property Name="FechaDisponibleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HoraFin" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ReservasFechasDisponibles" Relationship="Self.FK_ReservasFechasDisponibles_FechasDisponibles" FromRole="FechasDisponibles" ToRole="ReservasFechasDisponibles" />
+        </EntityType>
+        <EntityType Name="FechasOcupadas">
+          <Key>
+            <PropertyRef Name="FechaOcupadaID" />
+          </Key>
+          <Property Name="FechaOcupadaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HoraFin" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_FechasOcupadas" FromRole="FechasOcupadas" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ReservaID" />
+          </Key>
+          <Property Name="ReservaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MontoTotal" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+          <Property Name="FechaOcupadaID" Type="Int32" />
+          <Property Name="ReservaFechaID" Type="Int32" />
+          <NavigationProperty Name="FechasOcupadas" Relationship="Self.FK_Reservas_FechasOcupadas" FromRole="Reservas" ToRole="FechasOcupadas" />
+          <NavigationProperty Name="ReservasFechasDisponibles" Relationship="Self.FK_Reservas_ReservasFechasDisponibles" FromRole="Reservas" ToRole="ReservasFechasDisponibles" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Reservas_Usuarios" FromRole="Reservas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="ReservasFechasDisponibles">
+          <Key>
+            <PropertyRef Name="ReservaFechaID" />
+          </Key>
+          <Property Name="ReservaFechaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EspacioID" Type="Int32" Nullable="false" />
+          <Property Name="FechaDisponibleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Espacios" Relationship="Self.FK_ReservasFechasDisponibles_Espacios" FromRole="ReservasFechasDisponibles" ToRole="Espacios" />
+          <NavigationProperty Name="FechasDisponibles" Relationship="Self.FK_ReservasFechasDisponibles_FechasDisponibles" FromRole="ReservasFechasDisponibles" ToRole="FechasDisponibles" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_ReservasFechasDisponibles" FromRole="ReservasFechasDisponibles" ToRole="Reservas" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Rol" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Correo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Contrasena" Type="Binary" MaxLength="64" FixedLength="false" Nullable="false" />
+          <Property Name="RolID" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reservas_Usuarios" FromRole="Usuarios" ToRole="Reservas" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Rol" FromRole="Usuarios" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_Espacios_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Espacios" Type="Self.Espacios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Espacios">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspaciosDetalles_Espacios">
+          <End Role="Espacios" Type="Self.Espacios" Multiplicity="1" />
+          <End Role="EspaciosDetalles" Type="Self.EspaciosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espacios">
+              <PropertyRef Name="EspacioID" />
+            </Principal>
+            <Dependent Role="EspaciosDetalles">
+              <PropertyRef Name="EspacioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservasFechasDisponibles_Espacios">
+          <End Role="Espacios" Type="Self.Espacios" Multiplicity="1" />
+          <End Role="ReservasFechasDisponibles" Type="Self.ReservasFechasDisponibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espacios">
+              <PropertyRef Name="EspacioID" />
+            </Principal>
+            <Dependent Role="ReservasFechasDisponibles">
+              <PropertyRef Name="EspacioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservasFechasDisponibles_FechasDisponibles">
+          <End Role="FechasDisponibles" Type="Self.FechasDisponibles" Multiplicity="1" />
+          <End Role="ReservasFechasDisponibles" Type="Self.ReservasFechasDisponibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FechasDisponibles">
+              <PropertyRef Name="FechaDisponibleID" />
+            </Principal>
+            <Dependent Role="ReservasFechasDisponibles">
+              <PropertyRef Name="FechaDisponibleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_FechasOcupadas">
+          <End Role="FechasOcupadas" Type="Self.FechasOcupadas" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FechasOcupadas">
+              <PropertyRef Name="FechaOcupadaID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="FechaOcupadaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_ReservasFechasDisponibles">
+          <End Role="ReservasFechasDisponibles" Type="Self.ReservasFechasDisponibles" Multiplicity="0..1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReservasFechasDisponibles">
+              <PropertyRef Name="ReservaFechaID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="ReservaFechaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="UsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Rol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DEVELOSERSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="Espacios" EntityType="Self.Espacios" />
+          <EntitySet Name="EspaciosDetalles" EntityType="Self.EspaciosDetalles" />
+          <EntitySet Name="FechasDisponibles" EntityType="Self.FechasDisponibles" />
+          <EntitySet Name="FechasOcupadas" EntityType="Self.FechasOcupadas" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" />
+          <EntitySet Name="ReservasFechasDisponibles" EntityType="Self.ReservasFechasDisponibles" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Espacios_Categorias" Association="Self.FK_Espacios_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Espacios" EntitySet="Espacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspaciosDetalles_Espacios" Association="Self.FK_EspaciosDetalles_Espacios">
+            <End Role="Espacios" EntitySet="Espacios" />
+            <End Role="EspaciosDetalles" EntitySet="EspaciosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservasFechasDisponibles_Espacios" Association="Self.FK_ReservasFechasDisponibles_Espacios">
+            <End Role="Espacios" EntitySet="Espacios" />
+            <End Role="ReservasFechasDisponibles" EntitySet="ReservasFechasDisponibles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservasFechasDisponibles_FechasDisponibles" Association="Self.FK_ReservasFechasDisponibles_FechasDisponibles">
+            <End Role="FechasDisponibles" EntitySet="FechasDisponibles" />
+            <End Role="ReservasFechasDisponibles" EntitySet="ReservasFechasDisponibles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_FechasOcupadas" Association="Self.FK_Reservas_FechasOcupadas">
+            <End Role="FechasOcupadas" EntitySet="FechasOcupadas" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_ReservasFechasDisponibles" Association="Self.FK_Reservas_ReservasFechasDisponibles">
+            <End Role="ReservasFechasDisponibles" EntitySet="ReservasFechasDisponibles" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservas_Usuarios" Association="Self.FK_Reservas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Rol" Association="Self.FK_Usuarios_Rol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <FunctionImport Name="sp_CrearUsuario">
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Contrasena" Mode="In" Type="String" />
+            <Parameter Name="RolID" Mode="In" Type="Int32" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Login" ReturnType="Collection(DevelosersModel.sp_Login_Result)">
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Contrasena" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_Login_Result">
+          <Property Type="Int32" Name="UsuarioID" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+          <Property Type="Int32" Name="RolID" Nullable="false" />
+          <Property Type="String" Name="RolNombre" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DevelosersModelStoreContainer" CdmEntityContainer="DEVELOSERSEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="DevelosersModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Espacios">
+            <EntityTypeMapping TypeName="DevelosersModel.Espacios">
+              <MappingFragment StoreEntitySet="Espacios">
+                <ScalarProperty Name="EspacioID" ColumnName="EspacioID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="UbicacionEnlace" ColumnName="UbicacionEnlace" />
+                <ScalarProperty Name="Estacionamiento" ColumnName="Estacionamiento" />
+                <ScalarProperty Name="Sanitarios" ColumnName="Sanitarios" />
+                <ScalarProperty Name="AccesoSillaRuedas" ColumnName="AccesoSillaRuedas" />
+                <ScalarProperty Name="ImagenPrev" ColumnName="ImagenPrev" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EspaciosDetalles">
+            <EntityTypeMapping TypeName="DevelosersModel.EspaciosDetalles">
+              <MappingFragment StoreEntitySet="EspaciosDetalles">
+                <ScalarProperty Name="EspacioDetalleID" ColumnName="EspacioDetalleID" />
+                <ScalarProperty Name="ValorPorHora" ColumnName="ValorPorHora" />
+                <ScalarProperty Name="EspacioID" ColumnName="EspacioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FechasDisponibles">
+            <EntityTypeMapping TypeName="DevelosersModel.FechasDisponibles">
+              <MappingFragment StoreEntitySet="FechasDisponibles">
+                <ScalarProperty Name="FechaDisponibleID" ColumnName="FechaDisponibleID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FechasOcupadas">
+            <EntityTypeMapping TypeName="DevelosersModel.FechasOcupadas">
+              <MappingFragment StoreEntitySet="FechasOcupadas">
+                <ScalarProperty Name="FechaOcupadaID" ColumnName="FechaOcupadaID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="DevelosersModel.Reservas">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="ReservaID" ColumnName="ReservaID" />
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="FechaOcupadaID" ColumnName="FechaOcupadaID" />
+                <ScalarProperty Name="ReservaFechaID" ColumnName="ReservaFechaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservasFechasDisponibles">
+            <EntityTypeMapping TypeName="DevelosersModel.ReservasFechasDisponibles">
+              <MappingFragment StoreEntitySet="ReservasFechasDisponibles">
+                <ScalarProperty Name="ReservaFechaID" ColumnName="ReservaFechaID" />
+                <ScalarProperty Name="EspacioID" ColumnName="EspacioID" />
+                <ScalarProperty Name="FechaDisponibleID" ColumnName="FechaDisponibleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DevelosersModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DevelosersModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_CrearUsuario" FunctionName="DevelosersModel.Store.sp_CrearUsuario" />
+          <FunctionImportMapping FunctionImportName="sp_Login" FunctionName="DevelosersModel.Store.sp_Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DevelosersModel.sp_Login_Result">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
