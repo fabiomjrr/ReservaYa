@@ -20,7 +20,7 @@ namespace ReservaYa.Controllers
             return View(todos);
         }
 
-        public ActionResult Create()
+        public ActionResult Create() 
         {
 
             // Cargar categorías para el dropdown
