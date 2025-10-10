@@ -45,7 +45,10 @@ namespace ReservaYa.Controllers
             {
                 Session["UsuarioID"] = usuario.UsuarioID;
                 Session["NombreUsuario"] = $"{usuario.Nombres} {usuario.Apellidos}";
-                return RedirectToAction("Index", "Home");
+
+                // *** REDIRECCIÓN CORREGIDA ***
+                // Acción: Homepage, Controlador: GestionEspacios
+                return RedirectToAction("Homepage", "GestionEspacios");
             }
 
             ViewBag.Mensaje = "Correo o contraseña incorrectos.";

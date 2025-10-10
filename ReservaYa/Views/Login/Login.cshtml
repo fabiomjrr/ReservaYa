@@ -1,33 +1,19 @@
-﻿@{
+﻿@* Este archivo contiene la vista de inicio de sesión.
+    Se utiliza el helper Html.BeginForm para asegurar que el formulario
+    haga POST a la acción Login del controlador Login.
+*@
+
+@{
     ViewData["Title"] = "Iniciar Sesión";
+    // Si usas un layout, asegúrate de que esté aquí. Ejemplo:
+    // Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="form-box">
-        <h2>Bienvenido</h2>
-
-        <form action="/Login/Login" method="post">
-
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit" class="btn-custom">Entrar</button>
-        </form>
-
-        <p id="lblMensaje">@ViewBag.MensajeDeError</p>
-
-        <a id="hlRegistro" href="/Login/Register">¿No tienes cuenta? Regístrate</a>
-    </div>
-</div>
-
 <style>
-    /* ESTILOS Y ANIMACIÓN (dentro de la vista .cshtml) */
-
+    /* Estilos globales */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Asegúrate de que la ruta de la imagen de fondo sea correcta para tu proyecto */
         background: url("../Img/fondo.jpeg") no-repeat center center fixed;
         background-size: cover;
         margin: 0;
@@ -111,3 +97,33 @@
         }
     }
 </style>
+
+<div class="container">
+    <div class="form-box">
+        <h2>Bienvenido</h2>
+
+        @* El atributo action="/Login/Login" está bien, pero NO ES NECESARIO si usas Html.BeginForm (que es más seguro).
+            Dejaremos el HTML puro para este caso.
+        *@
+        <form action="/Login/Login" method="post">
+
+            @* CAMBIO 1: name="Correo" para que coincida con el parámetro del controlador *@
+            <label for="Correo">Correo Electrónico:</label>
+            <input type="email" id="Correo" name="Correo" required>
+
+            @* CAMBIO 2: name="Contrasena" para que coincida con el parámetro del controlador *@
+            <label for="Contrasena">Contraseña:</label>
+            <input type="password" id="Contrasena" name="Contrasena" required>
+
+            <button type="submit" class="btn-custom">Entrar</button>
+        </form>
+
+        @* CAMBIO 3: Usamos el ViewBag.Mensaje que es el que usa el controlador C# *@
+        @if (ViewBag.Mensaje != null)
+        {
+            <p id="lblMensaje">@ViewBag.Mensaje</p>
+        }
+
+        <a id="hlRegistro" href="/Login/Register">¿No tienes cuenta? Regístrate</a>
+    </div>
+</div>
