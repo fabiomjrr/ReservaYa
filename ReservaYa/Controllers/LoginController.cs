@@ -3,10 +3,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using ReservaYa.Models;
+using System.Collections.Generic; // Necesario para List<byte[]> o IEnumerable<byte[]>
 
 namespace ReservaYa.Controllers
 {
-    // *** CLASE RENOMBRADA A LoginController ***
     public class LoginController : Controller
     {
         private DEVELOSERSEntities db = new DEVELOSERSEntities();
@@ -27,22 +27,24 @@ namespace ReservaYa.Controllers
                 return View();
             }
 
-            // Nota: Se asume que Correo y Contrasena son campos byte[] en la base de datos,
-            // y se manejan como UTF8 bytes para la comparación.
             byte[] correoBytes = Encoding.UTF8.GetBytes(Correo.Trim());
             byte[] contraBytes = Encoding.UTF8.GetBytes(Contrasena.Trim());
 
-            var usuario = db.Usuarios.FirstOrDefault(u =>
-                u.Correo.SequenceEqual(correoBytes) &&
-                u.Contrasena.SequenceEqual(contraBytes) &&
-                u.Activo == true);
+            // *** CORRECCIÓN DE ERROR System.NotSupportedException ***
+            // Traemos todos los usuarios activos y filtramos en memoria (AsEnumerable()).
+            // Esto es necesario porque SequenceEqual en byte[] no es soportado por LINQ to Entities.
+            var usuario = db.Usuarios
+                .Where(u => u.Activo == true)
+                .AsEnumerable() // Fuerza la ejecución de la consulta hasta aquí y continua en memoria
+                .FirstOrDefault(u =>
+                    ((IEnumerable<byte>)u.Correo).SequenceEqual(correoBytes) &&
+                    ((IEnumerable<byte>)u.Contrasena).SequenceEqual(contraBytes));
+            // *** FIN CORRECCIÓN ***
 
             if (usuario != null)
             {
-                // Iniciar sesión
                 Session["UsuarioID"] = usuario.UsuarioID;
                 Session["NombreUsuario"] = $"{usuario.Nombres} {usuario.Apellidos}";
-                // Redirigir a Home/Index
                 return RedirectToAction("Index", "Home");
             }
 
@@ -56,7 +58,7 @@ namespace ReservaYa.Controllers
             return View();
         }
 
-        // POST: Login/Register (Lógica para registrar un nuevo usuario)
+        // POST: Login/Register
         [HttpPost]
         public ActionResult Register(string Nombres, string Apellidos, DateTime FechaNacimiento, string Correo, string Contrasena)
         {
@@ -69,11 +71,18 @@ namespace ReservaYa.Controllers
             byte[] correoBytes = Encoding.UTF8.GetBytes(Correo.Trim());
             byte[] contraBytes = Encoding.UTF8.GetBytes(Contrasena.Trim());
 
-            if (db.Usuarios.Any(u => u.Correo.SequenceEqual(correoBytes)))
+            // *** CORRECCIÓN DE ERROR System.NotSupportedException ***
+            // Traemos todos los correos activos y filtramos en memoria.
+            bool correoExiste = db.Usuarios
+                .AsEnumerable() // Ejecuta la consulta antes de filtrar
+                .Any(u => ((IEnumerable<byte>)u.Correo).SequenceEqual(correoBytes));
+
+            if (correoExiste)
             {
                 ViewBag.Mensaje = "Ya existe un usuario con ese correo.";
                 return View();
             }
+            // *** FIN CORRECCIÓN ***
 
             Usuarios nuevo = new Usuarios
             {
@@ -82,7 +91,7 @@ namespace ReservaYa.Controllers
                 FechaNacimiento = FechaNacimiento,
                 Correo = correoBytes,
                 Contrasena = contraBytes,
-                RolID = 2, 
+                RolID = 2, // Usuario común
                 Activo = true
             };
 

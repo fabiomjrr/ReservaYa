@@ -1,8 +1,130 @@
-﻿
-@{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    ViewData["Title"] = "Registro de Usuario";
 }
 
-<h2>Register</h2>
+<div class="container">
+    <div class="form-box">
+        <h2>Crear Cuenta</h2>
 
+        <!-- Formulario de registro -->
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+        {
+
+            <input type="text" id="Nombres" name="Nombres" required>
+
+            <label for="Apellidos">Apellidos:</label>
+            <input type="text" id="Apellidos" name="Apellidos" required>
+
+            <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="FechaNacimiento" name="FechaNacimiento" required>
+
+            <label for="Correo">Correo Electrónico:</label>
+            <input type="email" id="Correo" name="Correo" required>
+
+            <label for="Contrasena">Contraseña:</label>
+            <input type="password" id="Contrasena" name="Contrasena" required>
+
+            <button type="submit" class="btn-custom">Registrarse</button>
+        }
+
+        <!-- Mensaje de error/información -->
+        @if (ViewBag.Mensaje != null)
+        {
+            <!-- Aplica el estilo definido en el CSS -->
+            <p id="lblMensaje">@ViewBag.Mensaje</p>
+        }
+
+        <a id="hlRegistro" href="@Url.Action("Login", "Login")">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+</div>
+
+<style>
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Asegúrate de que la ruta de la imagen de fondo sea correcta para esta vista */
+        background: url("../Img/fondo.jpeg") no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-box {
+        width: 380px;
+        margin: 40px auto; 
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 15px;
+        box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+        .form-box h2 {
+            text-align: center;
+            color: #4A00E0;
+            margin-bottom: 20px;
+        }
+
+        .form-box label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-box input[type="text"],
+        .form-box input[type="email"],
+        .form-box input[type="password"],
+        .form-box input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .form-box input:focus {
+            border-color: #8E2DE2;
+            outline: none;
+            box-shadow: 0px 0px 8px rgba(142, 45, 226, 0.4);
+        }
+
+    .btn-custom {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+            transform: translateY(-2px);
+            box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+        }
+
+    #hlRegistro, #lblMensaje {
+        text-align: center;
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    /* Escape de Razor */
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
