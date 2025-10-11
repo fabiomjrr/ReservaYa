@@ -14,15 +14,15 @@ namespace ReservaYa
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
+                name: "GestionEspcs",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "GestionEspacios", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                name: "Registro",
+                name: "EspaciosDT",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Registrarse", action = "Registro", id = UrlParameter.Optional }
+                defaults: new { controller = "EspaciosDetalles", action = "Mostrar", id = UrlParameter.Optional }
             );
         }
     }

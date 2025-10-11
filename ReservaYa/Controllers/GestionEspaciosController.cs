@@ -16,7 +16,7 @@ namespace ReservaYa.Controllers
         private readonly DEVELOSERSEntities db = new DEVELOSERSEntities();
         public ActionResult Index()
         {
-            List<Espacios> todos = db.Espacios.ToList();
+            List<Espacios> todos = db.Espacios.AsNoTracking().ToList();
             return View(todos);
         }
 
@@ -24,7 +24,7 @@ namespace ReservaYa.Controllers
         {
 
             // Cargar categorías para el dropdown
-            ViewBag.CategoriaID = new SelectList(db.Categorias, "CategoriaID", "Nombre");
+            ViewBag.CategoriaID = new SelectList(db.Categorias.AsNoTracking(), "CategoriaID", "Nombre");
             return View();
         }
 
@@ -45,13 +45,13 @@ namespace ReservaYa.Controllers
 
                 return RedirectToAction("Index");
                 //TODO: APARATADO AGREGAR IMAGENES
-                //si todo va bien que vaya a la aprtado de agregar imagenes
+                //si todo va bien que vaya a la apartado de agregar imagenes
                 //return RedirectToAction("CreateAddImages", new { id = espacio.EspacioID });
             }
 
 
             // Si falla la validación, volver a cargar el dropdown
-            ViewBag.CategoriaID = new SelectList(db.Categorias, "CategoriaID", "Nombre", espacio.CategoriaID);
+            ViewBag.CategoriaID = new SelectList(db.Categorias.AsNoTracking(), "CategoriaID", "Nombre", espacio.CategoriaID);
             return View(espacio);
         }
         public ActionResult Update(int? id)
@@ -59,6 +59,7 @@ namespace ReservaYa.Controllers
             if (id == null) { return new HttpNotFoundResult();}
             // Cargar categorías para el dropdown
             var espacio = db.Espacios.Find(id);
+            //cargar datos adropdownList
             ViewBag.CategoriaID = new SelectList(db.Categorias, "CategoriaID", "Nombre",espacio.CategoriaID);
             return View(espacio); //busca y regresa
         }
@@ -73,6 +74,7 @@ namespace ReservaYa.Controllers
 
                 // Copia los valores del modelo recibido al original rastreado por EF
                 db.Entry(original).CurrentValues.SetValues(espacio);
+                //guardar cambios
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -80,7 +82,7 @@ namespace ReservaYa.Controllers
             }
 
             // Si hay errores, recargamos el dropdown
-            ViewBag.CategoriaID = new SelectList(db.Categorias, "CategoriaID", "Nombre", espacio.CategoriaID);
+            ViewBag.CategoriaID = new SelectList(db.Categorias.AsNoTracking(), "CategoriaID", "Nombre", espacio.CategoriaID);
             return View(espacio);                
         }
         // GET: Espacios/Delete/5
@@ -91,7 +93,7 @@ namespace ReservaYa.Controllers
             var espacio = db.Espacios.Find(id);
             if (espacio == null) return HttpNotFound();
 
-            // Puedes pasar el modelo directamente a la vista para mostrar la info
+            // modelo directamente a la vista para mostrar la info
             return View(espacio);
         }
 
@@ -108,7 +110,6 @@ namespace ReservaYa.Controllers
 
             return RedirectToAction("Index"); // Redirige a la lista después de eliminar
         }
-
 
 
         public ActionResult CreateAddImages(int? id)
