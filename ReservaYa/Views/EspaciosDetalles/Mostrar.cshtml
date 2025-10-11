@@ -77,15 +77,14 @@
             </thead>
             <tbody>
                 @for (int i = 0; i < ViewBag.FechasDp.Count; i++)
-                {
-                    // Color alternado manual (opcional, se puede omitir si usas .table-striped)
+                {                    
                     var rowClass = (i % 2 == 0) ? "table-light" : "table-secondary";
 
                     <tr class="@rowClass">
                         <td>@(i + 1)</td>
                         <td>@(((DateTime)ViewBag.FechasDp[i]).ToString("dd/MM/yyyy"))</td>
                         <td>
-                            <a href="@Url.Action("EditarFechas", "EspaciosDetalles", new { id = ViewBag.FechasDpId[i] })"
+                            <a href="#"
                                class="btn btn-sm btn-outline-primary">
                                 Editar fecha
                             </a>

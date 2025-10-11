@@ -73,7 +73,8 @@
                 @Html.DisplayFor(modelItem => item.Direccion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UbicacionEnlace)
+                <a href="@Html.DisplayFor(modelItem => item.UbicacionEnlace)" target="_blank" rel="noreferrer">Ver en el Mapa</a>
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estacionamiento)

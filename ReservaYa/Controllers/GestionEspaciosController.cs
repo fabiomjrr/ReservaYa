@@ -44,9 +44,6 @@ namespace ReservaYa.Controllers
                  */
 
                 return RedirectToAction("Index");
-                //TODO: APARATADO AGREGAR IMAGENES
-                //si todo va bien que vaya a la apartado de agregar imagenes
-                //return RedirectToAction("CreateAddImages", new { id = espacio.EspacioID });
             }
 
 
@@ -109,49 +106,7 @@ namespace ReservaYa.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index"); // Redirige a la lista después de eliminar
-        }
-
-
-        public ActionResult CreateAddImages(int? id)
-        {
-            var espacio = db.Espacios.Find(id);
-            if (espacio == null)
-            {
-                return HttpNotFound();
-            }
-            //4to param ,selecciona por def esa categoria
-            var cat = db.Categorias.Find(espacio.CategoriaID);
-            ViewBag.CategoriaNombre = cat.Nombre;
-            return View(espacio);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateAddImages(int EspacioID, HttpPostedFileBase portada01)
-        {
-            var espacio = db.Espacios.Find(EspacioID);
-            if (espacio == null)
-            {
-                return HttpNotFound();
-            }
-            string folderPath = Server.MapPath("~/Content/Uploads/Espacios/Images" + EspacioID);
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-
-            if (portada01 != null)
-            {
-                string filePath = Path.Combine(folderPath, Path.GetFileName(portada01.FileName));
-                portada01.SaveAs(filePath);
-                espacio.ImagenPrev = "/Content/Uploads/Espacios/Images/" + EspacioID + "/" + Path.GetFileName(portada01.FileName);
-            }
-            espacio.Disponible = true; // ahora el espacio está listo para mostrarse
-            //Y esto que significa , es un update?
-            db.Entry(espacio).State = EntityState.Modified;
-            db.SaveChanges();
-
-            return RedirectToAction("Details", new { id = espacio.EspacioID });
-        }
+        }       
 
     }
 }

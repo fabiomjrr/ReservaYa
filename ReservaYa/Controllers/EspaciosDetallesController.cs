@@ -40,15 +40,5 @@ namespace ReservaYa.Controllers
             return View(espacio);
 
         }
-
-        public ActionResult EditarFechas(int? id)
-        {
-            return View();
-        }
-
-        public ActionResult EditarDetalles(int? id)
-        {
-            return View();
-        }
     }
 }
