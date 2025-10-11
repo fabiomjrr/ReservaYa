@@ -203,6 +203,16 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Uploads\Espacios\Images\auditorio.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\background.png" />
+    <Content Include="Content\Uploads\Espacios\Images\classroom.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\estadio.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\Fondo.jpeg" />
+    <Content Include="Content\Uploads\Espacios\Images\icon.png" />
+    <Content Include="Content\Uploads\Espacios\Images\icon32.png" />
+    <Content Include="Content\Uploads\Espacios\Images\Lab.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\logo_compan.png" />
+    <Content Include="Content\Uploads\Espacios\Images\ReservaYaLogo.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -261,7 +271,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploads\Espacios\Docs\" />
-    <Folder Include="Content\Uploads\Espacios\Images\" />
     <Folder Include="Content\Uploads\Espacios\Videos\" />
   </ItemGroup>
   <ItemGroup>
