@@ -74,7 +74,6 @@ namespace ReservaYa.Controllers
             byte[] correoBytes = Encoding.UTF8.GetBytes(Correo.Trim());
             byte[] contraBytes = Encoding.UTF8.GetBytes(Contrasena.Trim());
 
-            // *** CORRECCIÓN DE ERROR System.NotSupportedException ***
             // Traemos todos los correos activos y filtramos en memoria.
             bool correoExiste = db.Usuarios
                 .AsEnumerable() // Ejecuta la consulta antes de filtrar

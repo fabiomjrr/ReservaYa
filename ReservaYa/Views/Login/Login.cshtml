@@ -5,22 +5,27 @@
 
 @{
     ViewData["Title"] = "Iniciar Sesión";
-    
+    // MANTENEMOS SIN 'Layout = null;' PARA MOSTRAR LA BARRA DE NAVEGACIÓN
+    // La vista usará el Layout por defecto.
 }
 
 <style>
     /* Estilos globales */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: url("/Content/Images/background.png") no-repeat center center fixed;
+        /* USO DE URL.CONTENT para asegurar la ruta absoluta del fondo */
+        background: url("@Url.Content("~/Content/Images/background.png")") no-repeat center center fixed;
         background-size: cover;
         margin: 0;
         padding: 0;
+        /* IMPORTANTE: Eliminamos el centrado vertical (display:flex) para que
+           el formulario respete el espacio del Layout principal (navbar). */
     }
 
     .form-box {
         width: 380px;
-        margin: 80px auto;
+        /* Ajuste de margen: 80px superior para dejar espacio al navbar, auto para centrado horizontal. */
+        margin: 80px auto 40px auto;
         background: #fff;
         padding: 25px 30px;
         border-radius: 15px;
@@ -28,43 +33,47 @@
         animation: fadeIn 1s ease-in-out;
     }
 
-    /* Nuevo estilo para el logo */
-    .logo-reserva {
-        display: block;
-        margin: 0 auto 20px auto; /* Centra horizontalmente y añade espacio inferior */
-        max-width: 180px; /* Tamaño máximo para que no sea muy grande */
+    /* Estilo para el contenedor del logo (consistente con la vista de Registro) */
+    .logo-container {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .logo-container img {
+        max-width: 250px;
         height: auto;
     }
 
-        .form-box h2 {
-            text-align: center;
-            color: #4A00E0;
-            margin-bottom: 20px;
-        }
+    .form-box h2 {
+        text-align: center;
+        color: #4A00E0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-        .form-box label {
-            font-weight: bold;
-            color: #333;
-            display: block;
-            margin-bottom: 5px;
-        }
+    .form-box label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
 
-        .form-box input[type="text"],
-        .form-box input[type="email"],
-        .form-box input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
+    .form-box input[type="text"],
+    .form-box input[type="email"],
+    .form-box input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
 
-        .form-box input:focus {
-            border-color: #8E2DE2;
-            outline: none;
-            box-shadow: 0px 0px 8px rgba(142, 45, 226, 0.4);
-        }
+    .form-box input:focus {
+        border-color: #8E2DE2;
+        outline: none;
+        box-shadow: 0px 0px 8px rgba(142, 45, 226, 0.4);
+    }
 
     .btn-custom {
         width: 100%;
@@ -78,11 +87,11 @@
         transition: 0.3s;
     }
 
-        .btn-custom:hover {
-            background: linear-gradient(135deg, #8E2DE2, #4A00E0);
-            transform: translateY(-2px);
-            box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
-        }
+    .btn-custom:hover {
+        background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+        transform: translateY(-2px);
+        box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+    }
 
     #hlRegistro, #lblMensaje {
         text-align: center;
@@ -91,12 +100,12 @@
         font-weight: bold;
     }
 
+    /* Escape de Razor */
     @@keyframes fadeIn {
         from {
             opacity: 0;
             transform: translateY(-20px);
         }
-
         to {
             opacity: 1;
             transform: translateY(0);
@@ -106,30 +115,35 @@
 
 <div class="container">
     <div class="form-box">
+
+        @* LOGO DE RESERVAYA (Consistente con la vista de Registro) *@
+        <div class="logo-container">
+            <img src="@Url.Content("~/Content/Images/ReservaYaLogo.png")"
+                 alt="ReservaYa - Reservas de Laboratorios" />
+        </div>
+
         <h2>Bienvenido</h2>
 
-        @* NUEVO LOGO AÑADIDO *@
-        <img src="/Content/Images/ReservaYaLogo.png" alt="ReservaYa Logo" class="logo-reserva" />
-
-        <form action="/Login/Login" method="post">
-
-            @* CAMBIO 1: name="Correo" para que coincida con el parámetro del controlador *@
+        @* USO DEL HELPER HTML.BEGINFORM para correcto envío a LoginController *@
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
             <label for="Correo">Correo Electrónico:</label>
             <input type="email" id="Correo" name="Correo" required>
 
-            @* CAMBIO 2: name="Contrasena" para que coincida con el parámetro del controlador *@
             <label for="Contrasena">Contraseña:</label>
             <input type="password" id="Contrasena" name="Contrasena" required>
 
             <button type="submit" class="btn-custom">Entrar</button>
-        </form>
-
-        @* CAMBIO 3: Usamos el ViewBag.Mensaje que es el que usa el controlador C# *@
-        @if (ViewBag.Mensaje != null)
-        {
-            <p id="lblMensaje">@ViewBag.Mensaje</p>
         }
 
-        <a id="hlRegistro" href="/Login/Register">¿No tienes cuenta? Regístrate</a>
+        @* Muestra el mensaje de error del controlador *@
+            @if (ViewBag.Mensaje != null)
+            {
+                <p id="lblMensaje">@ViewBag.Mensaje</p>
+            }
+
+            @* USO DE URL.ACTION para navegación segura *@
+
+        <a id="hlRegistro" href="@Url.Action("Register", "Login")">¿No tienes cuenta? Regístrate</a>
     </div>
 </div>
