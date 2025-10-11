@@ -5,16 +5,14 @@
 
 @{
     ViewData["Title"] = "Iniciar Sesión";
-    // Si usas un layout, asegúrate de que esté aquí. Ejemplo:
-    // Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 <style>
     /* Estilos globales */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        /* Asegúrate de que la ruta de la imagen de fondo sea correcta para tu proyecto */
-        background: url("../Img/fondo.jpeg") no-repeat center center fixed;
+        background: url("/Content/Images/background.png") no-repeat center center fixed;
         background-size: cover;
         margin: 0;
         padding: 0;
@@ -28,6 +26,14 @@
         border-radius: 15px;
         box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
         animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Nuevo estilo para el logo */
+    .logo-reserva {
+        display: block;
+        margin: 0 auto 20px auto; /* Centra horizontalmente y añade espacio inferior */
+        max-width: 180px; /* Tamaño máximo para que no sea muy grande */
+        height: auto;
     }
 
         .form-box h2 {
@@ -102,9 +108,9 @@
     <div class="form-box">
         <h2>Bienvenido</h2>
 
-        @* El atributo action="/Login/Login" está bien, pero NO ES NECESARIO si usas Html.BeginForm (que es más seguro).
-            Dejaremos el HTML puro para este caso.
-        *@
+        @* NUEVO LOGO AÑADIDO *@
+        <img src="/Content/Images/ReservaYaLogo.png" alt="ReservaYa Logo" class="logo-reserva" />
+
         <form action="/Login/Login" method="post">
 
             @* CAMBIO 1: name="Correo" para que coincida con el parámetro del controlador *@
