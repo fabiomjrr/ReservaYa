@@ -1,0 +1,13 @@
+#Configurado con autenticacion de windows
+
+> Install-Package EntityFramework -Version 6.4.4
+
+#Procuremos guardar todos los archivos en uso para continuar
+
+#Agregamos a la carpeta models un nuevo archivo tipo
+
+>ADO.NET Entity Data Model
+	seguimos los pasos y mapeamos la base de datos
+	Agregando Procedimientos Almacenados y por supuesto tablas
+
+##Dandole si a las advertencias - finalizamos

@@ -1,0 +1,24 @@
+﻿@model ReservaYa.Models.Espacios
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>¿Estás seguro de eliminar este espacio?</h2>
+<br />
+<br />
+<div>
+    <h4>@Model.Nombre</h4>
+    <p>@Model.Direccion</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.EspacioID)
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+}
+
