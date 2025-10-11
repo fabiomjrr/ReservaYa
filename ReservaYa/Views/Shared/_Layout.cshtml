@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="~/Content/Uploads/Espacios/Images/icon32.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>@ViewBag.Title - ReservaYa</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -11,14 +12,23 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <!-- Logo -->
+            <img src="~/Content/Uploads/Espacios/Images/icon32.png" />
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>                    
+                <!-- Contenido izquierda-->
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Haz tu reserva", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+
+                <!-- Contenido derecha -->
+                <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+                    <li>@Html.ActionLink("Iniciar Sesión", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Crear cuenta nueva", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
@@ -50,12 +60,12 @@
                     <!-- Contacto -->
                     <div class="col-md-4 mb-4">
                         <h5 class="fw-bold">Contáctanos</h5>
-                        <p class="mb-1"><i class="bi bi-envelope"></i> rm712@proton.me</p>
+                        <p class="mb-1"><i class="bi bi-envelope"></i> reservaya34@gmail.com</p>
                         <p class="mb-1"><i class="bi bi-telephone"></i>+503 6023-8774</p>
                         <div class="d-flex gap-3 mt-3">
-                            <a href="https://www.facebook.com/" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
-                            <a href="https://x.com/" class="text-light fs-5"><i class="bi bi-twitter"></i></a>
-                            <a href="https://www.instagram.com/" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61582322333145" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+                            <a href="https://reservaya.uy/" class="text-light fs-5"><i class="bi bi-twitter"></i></a>
+                            
                         </div>
                     </div>
                 </div>
