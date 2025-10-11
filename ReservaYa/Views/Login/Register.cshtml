@@ -1,28 +1,29 @@
-﻿@{
+﻿@* Este archivo contiene la vista de registro.
+    Se utiliza el helper Html.BeginForm para asegurar que el formulario
+    haga POST a la acción Register del controlador Login.
+*@
+@{
     ViewData["Title"] = "Registro de Usuario";
-    // Si quieres eliminar "Application name" y el enlace "Home" del Layout principal
-    // asegúrate de que esta línea esté presente y que el layout original
-    // ya no se aplique a esta vista.
-    // Layout = null;
+    
 }
 
 <style>
-    /* Estilos globales (mantienen lo anterior) */
+    /* Estilos globales */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* USO DE URL.CONTENT para asegurar la ruta absoluta del fondo */
         background: url("@Url.Content("~/Content/Images/background.png")") no-repeat center center fixed;
         background-size: cover;
         margin: 0;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        /* IMPORTANTE: Eliminamos el centrado vertical (display:flex) para que
+           el formulario respete el espacio del Layout principal (navbar). */
     }
 
     .form-box {
         width: 380px;
-        margin: 0 auto;
+        /* Ajuste de margen: 80px superior para dejar espacio al navbar, auto para centrado horizontal. */
+        margin: 80px auto 40px auto;
         background: #fff;
         padding: 25px 30px;
         border-radius: 15px;
@@ -30,37 +31,48 @@
         animation: fadeIn 1s ease-in-out;
     }
 
-        .form-box h2 {
-            text-align: center;
-            color: #4A00E0;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+    /* Estilo para el contenedor del logo (consistente con la vista de Login) */
+    .logo-container {
+        text-align: center;
+        margin-bottom: 15px;
+    }
 
-        .form-box label {
-            font-weight: bold;
-            color: #333;
-            display: block;
-            margin-bottom: 5px;
-        }
+    .logo-container img {
+        max-width: 250px;
+        height: auto;
+    }
 
-        .form-box input[type="text"],
-        .form-box input[type="email"],
-        .form-box input[type="password"],
-        .form-box input[type="date"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
+    .form-box h2 {
+        text-align: center;
+        color: #4A00E0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-        .form-box input:focus {
-            border-color: #8E2DE2;
-            outline: none;
-            box-shadow: 0px 0px 8px rgba(142, 45, 226, 0.4);
-        }
+    .form-box label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-box input[type="text"],
+    .form-box input[type="email"],
+    .form-box input[type="password"],
+    .form-box input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .form-box input:focus {
+        border-color: #8E2DE2;
+        outline: none;
+        box-shadow: 0px 0px 8px rgba(142, 45, 226, 0.4);
+    }
 
     .btn-custom {
         width: 100%;
@@ -74,11 +86,11 @@
         transition: 0.3s;
     }
 
-        .btn-custom:hover {
-            background: linear-gradient(135deg, #8E2DE2, #4A00E0);
-            transform: translateY(-2px);
-            box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
-        }
+    .btn-custom:hover {
+        background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+        transform: translateY(-2px);
+        box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+    }
 
     #hlRegistro, #lblMensaje {
         text-align: center;
@@ -87,6 +99,7 @@
         font-weight: bold;
     }
 
+    /* Escape de Razor */
     @@keyframes fadeIn {
         from {
             opacity: 0;
@@ -103,11 +116,10 @@
 <div class="container">
     <div class="form-box">
 
-        @* === RUTA DE IMAGEN CORREGIDA: ReservaYaLogo.png === *@
-        <div style="text-align: center; margin-bottom: 15px;">
+        @* LOGO DE RESERVAYA *@
+        <div class="logo-container">
             <img src="@Url.Content("~/Content/Images/ReservaYaLogo.png")"
-                 alt="ReservaYa - Reservas de Laboratorios"
-                 style="max-width: 250px; height: auto;" />
+                 alt="ReservaYa - Reservas de Laboratorios" />
         </div>
 
         <h2>Crear Cuenta</h2>
