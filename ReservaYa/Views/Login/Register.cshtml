@@ -1,57 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Registro de Usuario";
+    // Si quieres eliminar "Application name" y el enlace "Home" del Layout principal
+    // asegúrate de que esta línea esté presente y que el layout original
+    // ya no se aplique a esta vista.
+    // Layout = null;
 }
 
-<div class="container">
-    <div class="form-box">
-        <h2>Crear Cuenta</h2>
-
-        <!-- Formulario de registro -->
-        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
-        {
-
-            <input type="text" id="Nombres" name="Nombres" required>
-
-            <label for="Apellidos">Apellidos:</label>
-            <input type="text" id="Apellidos" name="Apellidos" required>
-
-            <label for="FechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="FechaNacimiento" name="FechaNacimiento" required>
-
-            <label for="Correo">Correo Electrónico:</label>
-            <input type="email" id="Correo" name="Correo" required>
-
-            <label for="Contrasena">Contraseña:</label>
-            <input type="password" id="Contrasena" name="Contrasena" required>
-
-            <button type="submit" class="btn-custom">Registrarse</button>
-        }
-
-        <!-- Mensaje de error/información -->
-        @if (ViewBag.Mensaje != null)
-        {
-            <!-- Aplica el estilo definido en el CSS -->
-            <p id="lblMensaje">@ViewBag.Mensaje</p>
-        }
-
-        <a id="hlRegistro" href="@Url.Action("Login", "Login")">¿Ya tienes cuenta? Inicia sesión</a>
-    </div>
-</div>
-
 <style>
-    
+    /* Estilos globales (mantienen lo anterior) */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        /* Asegúrate de que la ruta de la imagen de fondo sea correcta para esta vista */
-        background: url("../Img/fondo.jpeg") no-repeat center center fixed;
+        background: url("@Url.Content("~/Content/Images/background.png")") no-repeat center center fixed;
         background-size: cover;
         margin: 0;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
     .form-box {
         width: 380px;
-        margin: 40px auto; 
+        margin: 0 auto;
         background: #fff;
         padding: 25px 30px;
         border-radius: 15px;
@@ -62,6 +33,7 @@
         .form-box h2 {
             text-align: center;
             color: #4A00E0;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -115,7 +87,6 @@
         font-weight: bold;
     }
 
-    /* Escape de Razor */
     @@keyframes fadeIn {
         from {
             opacity: 0;
@@ -128,3 +99,44 @@
         }
     }
 </style>
+
+<div class="container">
+    <div class="form-box">
+
+        @* === RUTA DE IMAGEN CORREGIDA: ReservaYaLogo.png === *@
+        <div style="text-align: center; margin-bottom: 15px;">
+            <img src="@Url.Content("~/Content/Images/ReservaYaLogo.png")"
+                 alt="ReservaYa - Reservas de Laboratorios"
+                 style="max-width: 250px; height: auto;" />
+        </div>
+
+        <h2>Crear Cuenta</h2>
+
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+        {
+            <label for="Nombres">Nombres:</label>
+            <input type="text" id="Nombres" name="Nombres" required>
+
+            <label for="Apellidos">Apellidos:</label>
+            <input type="text" id="Apellidos" name="Apellidos" required>
+
+            <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="FechaNacimiento" name="FechaNacimiento" required>
+
+            <label for="Correo">Correo Electrónico:</label>
+            <input type="email" id="Correo" name="Correo" required>
+
+            <label for="Contrasena">Contraseña:</label>
+            <input type="password" id="Contrasena" name="Contrasena" required>
+
+            <button type="submit" class="btn-custom">Registrarse</button>
+        }
+
+        @if (ViewBag.Mensaje != null)
+        {
+            <p id="lblMensaje">@ViewBag.Mensaje</p>
+        }
+
+        <a id="hlRegistro" href="@Url.Action("Login", "Login")">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+</div>
