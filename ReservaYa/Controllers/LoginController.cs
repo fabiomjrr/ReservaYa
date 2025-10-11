@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using ReservaYa.Models;
-using System.Collections.Generic; // Necesario para List<byte[]> o IEnumerable<byte[]>
+using System.Collections.Generic;
 
 namespace ReservaYa.Controllers
 {
@@ -30,7 +30,6 @@ namespace ReservaYa.Controllers
             byte[] correoBytes = Encoding.UTF8.GetBytes(Correo.Trim());
             byte[] contraBytes = Encoding.UTF8.GetBytes(Contrasena.Trim());
 
-            // *** CORRECCIÓN DE ERROR System.NotSupportedException ***
             // Traemos todos los usuarios activos y filtramos en memoria (AsEnumerable()).
             // Esto es necesario porque SequenceEqual en byte[] no es soportado por LINQ to Entities.
             var usuario = db.Usuarios
@@ -39,14 +38,14 @@ namespace ReservaYa.Controllers
                 .FirstOrDefault(u =>
                     ((IEnumerable<byte>)u.Correo).SequenceEqual(correoBytes) &&
                     ((IEnumerable<byte>)u.Contrasena).SequenceEqual(contraBytes));
-            // *** FIN CORRECCIÓN ***
+            
 
             if (usuario != null)
             {
                 Session["UsuarioID"] = usuario.UsuarioID;
                 Session["NombreUsuario"] = $"{usuario.Nombres} {usuario.Apellidos}";
 
-                // *** REDIRECCIÓN CORREGIDA ***
+                // *** REDIRECCIÓN***
                 // Acción: Homepage, Controlador: GestionEspacios
                 return RedirectToAction("Homepage", "GestionEspacios");
             }
@@ -84,7 +83,7 @@ namespace ReservaYa.Controllers
                 ViewBag.Mensaje = "Ya existe un usuario con ese correo.";
                 return View();
             }
-            // *** FIN CORRECCIÓN ***
+            
 
             Usuarios nuevo = new Usuarios
             {
