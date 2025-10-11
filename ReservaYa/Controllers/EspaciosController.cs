@@ -20,8 +20,8 @@ namespace ReservaYa.Controllers
             var espacios = await db.Espacios.Where(e => e.Disponible).ToListAsync();
             return View(espacios);
         }
-
-        public async Task<ActionResult> Details(int id)
+        
+        public async Task<ActionResult> Details(int? id)
         {
             var espacio = await db.Espacios.FindAsync(id);
             if (espacio == null) return HttpNotFound();
