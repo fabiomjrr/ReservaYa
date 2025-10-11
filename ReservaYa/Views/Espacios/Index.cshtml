@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ReservaYa.Models.Espacios>
+
+@{
+    ViewBag.Title = "Espacios Disponibles";
+}
+
+<h2>Espacios Disponibles</h2>
+<hr />
+
+@foreach (var e in Model)
+{
+    <div class="card p-3 mb-3 border">
+        <h3>@e.Nombre</h3>
+        <p>@e.Direccion</p>
+        <p>Capacidad: @e.Capacidad</p>
+        @Html.ActionLink("Ver detalles", "Details", new { id = e.EspacioID }, new { @class = "btn btn-primary" })
+    </div>
+}able>
