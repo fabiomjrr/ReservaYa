@@ -267,7 +267,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\GestionEspacios\Index.cshtml" />
     <Content Include="Views\GestionEspacios\Create.cshtml" />
-    <Content Include="Views\GestionEspacios\CreateAddImages.cshtml" />
     <Content Include="Views\GestionEspacios\Update.cshtml" />
     <Content Include="Views\GestionEspacios\Delete.cshtml" />
     <Content Include="Views\GestionEspacios\Homepage.cshtml" />
