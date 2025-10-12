@@ -23,8 +23,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                     <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Panel de Administrador", "Homepage", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+<<<<<<< HEAD
 
                     <!--Esta podria ser una vista intermedia y no la vista directa de creacion*-->
+=======
+                    <<<<<<< HEAD
+                    =======
+                    <!--Esta podria ser una vista intermedia y no la vista directa de creacion*-->
+                    >>>>>>> 5c3eaf26dd2e49857cd5b99b0497fb5b895e2a86
+>>>>>>> 925ccc1cb63660e7ef7905dc6a51ea60fd0e89fc
                     <li>@Html.ActionLink("Crea tu propio espacio", "Create", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
 
@@ -40,48 +47,47 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="bg-dark text-light pt-5 pb-3 mt-5">
-            <div class="container">
-                <div class="row">
+    </div>
 
-                    <!-- Logo / Nombre -->
-                    <div class="col-md-4 mb-4">
-                        <h3 class="fw-bold text-uppercase">DEVELO₱ERS</h3>
-                        <p class="text-muted">Reserva Inteligente, Espacios Eficientes, tales como Salones educativos y Laboratorios Informáticos</p>
-                    </div>
+    <footer class="bg-dark text-light pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
 
-                    <!-- Links -->
-                    <div class="col-md-4 mb-4">
-                        <h5 class="fw-bold">Enlaces</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="/Default.aspx" class="text-light text-decoration-none">Inicio</a></li>
-                            <li><a href="/ReservarLabs.aspx" class="text-light text-decoration-none">Haz tu reserva</a></li>
-
-                        </ul>
-                    </div>
-
-                    <!-- Contacto -->
-                    <div class="col-md-4 mb-4">
-                        <h5 class="fw-bold">Contáctanos</h5>
-                        <p class="mb-1"><i class="bi bi-envelope"></i> reservaya34@gmail.com</p>
-                        <p class="mb-1"><i class="bi bi-telephone"></i>+503 6023-8774</p>
-                        <div class="d-flex gap-3 mt-3">
-                            <a href="https://www.facebook.com/profile.php?id=61582322333145" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
-                            <a href="https://x.com/ReservaYa34" class="text-light fs-5"><i class="bi bi-twitter"></i></a>
-                            
-                        </div>
-                    </div>
+                <!-- Logo / Nombre -->
+                <div class="col-md-4 mb-4">
+                    <h3 class="fw-bold text-uppercase">DEVELO₱ERS</h3>
+                    <p class="text-muted">Reserva Inteligente, Espacios Eficientes, tales como Salones educativos y Laboratorios Informáticos</p>
                 </div>
 
-                <hr class="border-secondary">
-                <div class="text-center text-muted">
-                    <small>&copy; 2025 DEVELO₱ERS. Todos los derechos reservados.</small>
+                <!-- Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/Default.aspx" class="text-light text-decoration-none">Inicio</a></li>
+                        <li><a href="/ReservarLabs.aspx" class="text-light text-decoration-none">Haz tu reserva</a></li>
+
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Contáctanos</h5>
+                    <p class="mb-1"><i class="bi bi-envelope"></i> reservaya34@gmail.com</p>
+                    <p class="mb-1"><i class="bi bi-telephone"></i>+503 6023-8774</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="https://www.facebook.com/profile.php?id=61582322333145" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/ReservaYa34" class="text-light fs-5"><i class="bi bi-twitter"></i></a>
+
+                    </div>
                 </div>
             </div>
-        </footer>
 
-
-    </div>
+            <hr class="border-secondary">
+            <div class="text-center text-muted">
+                <small>&copy; 2025 DEVELO₱ERS. Todos los derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
