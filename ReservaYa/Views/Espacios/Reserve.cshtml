@@ -1,0 +1,29 @@
+﻿@model ReservaYa.ViewModels.ReservaCreateViewModel
+
+@{
+    ViewBag.Title = "Confirmar Reserva";
+}
+
+<h2>Confirmar Reserva</h2>
+<hr />
+
+@using (Html.BeginForm()){
+    @Html.AntiForgeryToken()
+
+    <dl class="dl-horizontal">
+        <dt>Espacio:</dt>
+        <dd>@Model.EspacioNombre</dd>
+        <dt>Fecha:</dt>
+        <dd>@Model.Fecha.ToShortDateString()</dd>
+        <dt>Hora:</dt>
+        <dd>@Model.HoraInicio - @Model.HoraFin</dd>
+        <dt>Valor por Hora:</dt>
+        <dd>@Model.ValorPorHora.ToString("C")</dd>
+    </dl>
+
+    @Html.HiddenFor(m => m.ReservaFechaID)
+    @Html.HiddenFor(m => m.ValorPorHora)
+
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+ }
