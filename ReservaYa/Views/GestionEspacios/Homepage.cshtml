@@ -73,7 +73,7 @@
                 @Html.DisplayFor(modelItem => item.Direccion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UbicacionEnlace)
+                <a href="@Html.DisplayFor(modelItem => item.UbicacionEnlace)" target="_blank" rel=" nofollow noreferrer">Link</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estacionamiento)
@@ -92,7 +92,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Update", new { id = item.EspacioID }, new { @class = "btn btn-warning" }) |
-                @Html.ActionLink("Details", "Details" /*, new { id = item.EspacioID }*/, null, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Details", "Mostrar" ,"EspaciosDetalles",new { id = item.EspacioID }, new { @class = "btn btn-info" }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.EspacioID }, new { @class = "btn btn-danger" })
             </td>
         </tr>

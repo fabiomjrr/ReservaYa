@@ -21,7 +21,7 @@ namespace ReservaYa.Controllers
         }
         public ActionResult Homepage()
         {
-            List<Espacios> todos = db.Espacios.ToList();
+            List<Espacios> todos = db.Espacios.AsNoTracking().ToList();
             return View(todos);
         }
 
