@@ -47,7 +47,7 @@
                         <h5 class="card-title fw-bold">@espacio.Nombre</h5>
                         <p class="card-text text-muted">Capacidad: @espacio.Capacidad personas</p>
 
-                        <!-- Formularios pequeños para navegar / evitar conflicto con formularios externos -->
+                       
                         @using (Html.BeginForm("Details", "Espacios", FormMethod.Get))
                         {
                             @Html.Hidden("id", espacio.EspacioID)

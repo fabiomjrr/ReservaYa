@@ -8,7 +8,6 @@
 <p>@Model.Espacio.Direccion</p>
 <p>Capacidad: @Model.Espacio.Capacidad</p>
 
-<!-- FORMULARIO SUPERIOR: envía a Espacios/QuickReserve (POST) -->
 @using (Html.BeginForm("QuickReserve", "Espacios", FormMethod.Post, new { @class = "row g-3 card shadow-sm mb-5 border-0 p-3" }))
 {
     @Html.AntiForgeryToken()
