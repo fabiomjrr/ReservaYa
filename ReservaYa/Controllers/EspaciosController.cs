@@ -32,17 +32,23 @@ namespace ReservaYa.Controllers
                 TempData["QuickReserveError"] = "Por favor completa Fecha y Hora.";
                 return RedirectToAction("Index");
             }
+            //else
+            //{
+            //    //Proceso de guardar
+            //}
 
-            // Lógica mínima: aquí decides cómo procesar.
-            // Opciones comunes:
-            //  - Crear una reserva "rápida" sin seleccionar espacio (no recomendable).
-            //  - Redirigir a Index/Details para que el usuario seleccione el espacio (más lógico).
-            //
-            // Vamos a redirigir a Index con un mensaje y mantener los datos en TempData para UX,
-            // o podrías redirigir a Details si conoces el EspacioID.
+                // Lógica mínima: aquí decides cómo procesar.
+                // Opciones comunes:
+                //  - Crear una reserva "rápida" sin seleccionar espacio (no recomendable).
+                //  - Redirigir a Index/Details para que el usuario seleccione el espacio (más lógico).
+                //
+                // Vamos a redirigir a Index con un mensaje y mantener los datos en TempData para UX,
+                // o podrías redirigir a Details si conoces el EspacioID.
 
-            TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
-            // Puedes pasar datos para pre-llenar formularios posteriores si lo deseas.
+                //Donde el proceso de guardar? // aqui javier
+
+                TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
+
             return RedirectToAction("Index");
         }
 
@@ -56,6 +62,8 @@ namespace ReservaYa.Controllers
                 .Include(rf => rf.FechasDisponibles)
                 .Where(rf => rf.EspacioID == id && rf.FechasDisponibles.Disponible)
                 .ToListAsync();
+
+            //si fechas.count == 0 falla
 
             var vm = new ReservaYa.ViewModels.EspacioDetailsViewModel
             {
