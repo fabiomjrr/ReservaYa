@@ -20,8 +20,34 @@ namespace ReservaYa.Controllers
             var espacios = await db.Espacios.Where(e => e.Disponible).ToListAsync();
             return View(espacios);
         }
-        
-        public async Task<ActionResult> Details(int? id)
+        // POST: Espacios/QuickReserve
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult QuickReserve(QuickReserveViewModel model)
+        {
+            // Validaciones básicas
+            if (model == null || !model.Fecha.HasValue || !model.Hora.HasValue)
+            {
+                // Podrías retornar con ModelState a la vista Index y mostrar errores
+                TempData["QuickReserveError"] = "Por favor completa Fecha y Hora.";
+                return RedirectToAction("Index");
+            }
+
+            // Lógica mínima: aquí decides cómo procesar.
+            // Opciones comunes:
+            //  - Crear una reserva "rápida" sin seleccionar espacio (no recomendable).
+            //  - Redirigir a Index/Details para que el usuario seleccione el espacio (más lógico).
+            //
+            // Vamos a redirigir a Index con un mensaje y mantener los datos en TempData para UX,
+            // o podrías redirigir a Details si conoces el EspacioID.
+
+            TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
+            // Puedes pasar datos para pre-llenar formularios posteriores si lo deseas.
+            return RedirectToAction("Index");
+        }
+
+        // GET: Espacios/Details/5
+        public async Task<ActionResult> Details(int id)
         {
             var espacio = await db.Espacios.FindAsync(id);
             if (espacio == null) return HttpNotFound();
@@ -31,7 +57,7 @@ namespace ReservaYa.Controllers
                 .Where(rf => rf.EspacioID == id && rf.FechasDisponibles.Disponible)
                 .ToListAsync();
 
-            var vm = new EspacioDetailsViewModel
+            var vm = new ReservaYa.ViewModels.EspacioDetailsViewModel
             {
                 Espacio = espacio,
                 FechasDisponibles = fechas
@@ -39,6 +65,8 @@ namespace ReservaYa.Controllers
 
             return View(vm);
         }
+
+
 
         [Authorize(Roles = "Usuario")]
         public async Task<ActionResult> Reserve(int reservaFechaId)
@@ -127,6 +155,8 @@ namespace ReservaYa.Controllers
                     ModelState.AddModelError("", "Error al procesar la reserva.");
                     return View(model);
                 }
+
+
 
             }
 
