@@ -23,7 +23,7 @@ namespace ReservaYa.Controllers
         // POST: Espacios/QuickReserve
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult QuickReserve(QuickReserveViewModel model)
+        public ActionResult QuickReserve(QuickReserveViewModel model,int idFechaDp)
         {
             if (model == null || !model.Fecha.HasValue || !model.Hora.HasValue)
             {
@@ -31,10 +31,21 @@ namespace ReservaYa.Controllers
                 TempData["QuickReserveError"] = "Por favor completa Fecha y Hora.";
                 return RedirectToAction("Index");
             }
+            else
+            {                
+                return RedirectToAction("Reserve",idFechaDp);
+            }
 
            
 
+            //Donde el proceso de guardar? // aqui javier
+
+
             TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 278e1da4af9a7bcef2715545354b94f1c904469f
             return RedirectToAction("Index");
         }
 
@@ -49,11 +60,22 @@ namespace ReservaYa.Controllers
                 .Where(rf => rf.EspacioID == id && rf.FechasDisponibles.Disponible)
                 .ToListAsync();
 
+            //si fechas.count == 0 falla
+
             var vm = new ReservaYa.ViewModels.EspacioDetailsViewModel
             {
                 Espacio = espacio,
                 FechasDisponibles = fechas
             };
+
+            //join entre fechas dp on espcaio id return FechaDpId
+            var reservaFechDP = db.ReservasFechasDisponibles
+    .AsNoTracking()
+    .Where(p => p.EspacioID == espacio.EspacioID)
+    .Select(p => p.FechaDisponibleID)
+    .ToList();
+
+            ViewBag.IdFechaDp = 1;            
 
             return View(vm);
         }
@@ -85,6 +107,36 @@ namespace ReservaYa.Controllers
                 ValorPorHora = valor,
                 EspacioNombre = rf.Espacios.Nombre
             };
+
+            //insertar fecha ocupada id 
+            var fechaOcupada = new FechasOcupadas
+            {
+                Fecha = vm.Fecha,
+                HoraInicio = vm.HoraInicio,
+                HoraFin = vm.HoraFin,
+                Activa = true
+                
+
+            };
+            db.FechasOcupadas.Add(fechaOcupada);
+            db.SaveChanges();
+            //actualizar 
+
+            //Proceso de guardado
+            var reserva = new Reservas
+            {
+                MontoTotal = valor,
+                UsuarioID = Convert.ToInt32(Session["UsuarioID"]),
+                //funciona por el tracking de EF -- espero
+                FechaOcupadaID = db.FechasOcupadas.AsNoTracking().Where(x => x.FechaOcupadaID == fechaOcupada.FechaOcupadaID).Select(x => x.FechaOcupadaID).FirstOrDefault(),
+                ReservaFechaID = vm.ReservaFechaID
+                
+            };
+            db.Reservas.Add(reserva);
+            db.SaveChanges();
+
+            //actualizar
+
 
             return View(vm);
         }
