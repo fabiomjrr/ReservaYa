@@ -139,6 +139,7 @@
     <Compile Include="Controllers\EspaciosDetallesController.cs" />
     <Compile Include="Controllers\GestionEspaciosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -288,6 +289,7 @@
     <Folder Include="Content\Images\" />
     <Folder Include="Content\Uploads\Espacios\Docs\" />
     <Folder Include="Content\Uploads\Espacios\Videos\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

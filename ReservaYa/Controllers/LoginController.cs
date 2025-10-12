@@ -47,6 +47,7 @@ namespace ReservaYa.Controllers
 
                 // *** REDIRECCIÓN***
                 // Acción: Homepage, Controlador: GestionEspacios
+                //ViewBag.Usuario = $"{usuario.Nombres} {usuario.Apellidos}";
                 return RedirectToAction("Homepage", "GestionEspacios");
             }
 
