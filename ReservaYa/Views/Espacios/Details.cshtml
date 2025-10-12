@@ -13,6 +13,9 @@
 {
     @Html.AntiForgeryToken()
 
+    @*@Html.Hidden("reservaFechaId",ViewBag.IdFechaDp)*@
+
+
     <div class="col-md-6">
         <label for="Cliente" class="form-label fw-semibold">Cliente</label>
         <input type="text" name="Cliente" id="Cliente" class="form-control" placeholder="Nombre del cliente" />
@@ -36,4 +39,5 @@
     <div class="col-12 text-end mt-3">
         <button type="submit" class="btn btn-danger px-4">Guardar Reserva</button>
     </div>
+
 }

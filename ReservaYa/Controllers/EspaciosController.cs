@@ -23,7 +23,7 @@ namespace ReservaYa.Controllers
         // POST: Espacios/QuickReserve
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult QuickReserve(QuickReserveViewModel model)
+        public ActionResult QuickReserve(QuickReserveViewModel model,int idFechaDp)
         {
             // Validaciones básicas
             if (model == null || !model.Fecha.HasValue || !model.Hora.HasValue)
@@ -32,22 +32,23 @@ namespace ReservaYa.Controllers
                 TempData["QuickReserveError"] = "Por favor completa Fecha y Hora.";
                 return RedirectToAction("Index");
             }
-            //else
-            //{
-            //    //Proceso de guardar
-            //}
+            else
+            {                
+                return RedirectToAction("Reserve",idFechaDp);
+            }
 
-                // Lógica mínima: aquí decides cómo procesar.
-                // Opciones comunes:
-                //  - Crear una reserva "rápida" sin seleccionar espacio (no recomendable).
-                //  - Redirigir a Index/Details para que el usuario seleccione el espacio (más lógico).
-                //
-                // Vamos a redirigir a Index con un mensaje y mantener los datos en TempData para UX,
-                // o podrías redirigir a Details si conoces el EspacioID.
+            // Lógica mínima: aquí decides cómo procesar.
+            // Opciones comunes:
+            //  - Crear una reserva "rápida" sin seleccionar espacio (no recomendable).
+            //  - Redirigir a Index/Details para que el usuario seleccione el espacio (más lógico).
+            //
+            // Vamos a redirigir a Index con un mensaje y mantener los datos en TempData para UX,
+            // o podrías redirigir a Details si conoces el EspacioID.
 
-                //Donde el proceso de guardar? // aqui javier
+            //Donde el proceso de guardar? // aqui javier
 
-                TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
+
+            TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
 
             return RedirectToAction("Index");
         }
@@ -70,6 +71,15 @@ namespace ReservaYa.Controllers
                 Espacio = espacio,
                 FechasDisponibles = fechas
             };
+
+            //join entre fechas dp on espcaio id return FechaDpId
+            var reservaFechDP = db.ReservasFechasDisponibles
+    .AsNoTracking()
+    .Where(p => p.EspacioID == espacio.EspacioID)
+    .Select(p => p.FechaDisponibleID)
+    .ToList();
+
+            ViewBag.IdFechaDp = 1;            
 
             return View(vm);
         }
@@ -101,6 +111,36 @@ namespace ReservaYa.Controllers
                 ValorPorHora = valor,
                 EspacioNombre = rf.Espacios.Nombre
             };
+
+            //insertar fecha ocupada id 
+            var fechaOcupada = new FechasOcupadas
+            {
+                Fecha = vm.Fecha,
+                HoraInicio = vm.HoraInicio,
+                HoraFin = vm.HoraFin,
+                Activa = true
+                
+
+            };
+            db.FechasOcupadas.Add(fechaOcupada);
+            db.SaveChanges();
+            //actualizar 
+
+            //Proceso de guardado
+            var reserva = new Reservas
+            {
+                MontoTotal = valor,
+                UsuarioID = Convert.ToInt32(Session["UsuarioID"]),
+                //funciona por el tracking de EF -- espero
+                FechaOcupadaID = db.FechasOcupadas.AsNoTracking().Where(x => x.FechaOcupadaID == fechaOcupada.FechaOcupadaID).Select(x => x.FechaOcupadaID).FirstOrDefault(),
+                ReservaFechaID = vm.ReservaFechaID
+                
+            };
+            db.Reservas.Add(reserva);
+            db.SaveChanges();
+
+            //actualizar
+
 
             return View(vm);
         }

@@ -18,12 +18,15 @@
         <dt>Hora:</dt>
         <dd>@Model.HoraInicio - @Model.HoraFin</dd>
         <dt>Valor por Hora:</dt>
-        <dd>@Model.ValorPorHora.ToString("C")</dd>
+        <dd>@Model.ValorPorHora.ToString("C")</dd>}
+
+            <dd>@Html.Hidden("",)</dd>
+
     </dl>
 
     @Html.HiddenFor(m => m.ReservaFechaID)
     @Html.HiddenFor(m => m.ValorPorHora)
 
     <button type="submit" class="btn btn-primary">Confirmar</button>
-    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" },new {idFechaDp = ViewBag.IdFechaDp})
  }
