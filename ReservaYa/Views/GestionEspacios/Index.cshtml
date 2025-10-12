@@ -1,102 +1,128 @@
-﻿@model IEnumerable<ReservaYa.Models.Espacios>
-
+﻿
 @{
-    ViewBag.Title = "Inicio";
+    ViewBag.Title = "Homepage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Inicio</h1>
+<main>
+    <section class="hero">
+        <div class="contenido-hero">
+            <h2>Reserva Inteligente,  <span>Espacios Eficientes</span></h2>
+            <p>Gestiona aulas, laboratorios y más con precisión. Controla disponibilidad por día y hora, optimiza el uso de tus espacios y accede a reportes detallados en tiempo real.</p>
+            <a class="btn btn-primary" href="/ReservarLabs.aspx">VER</a>
+        </div>
+    </section>
 
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info" })
-</p>
 
-@if (Model.Count() == 0)
-{
-    <h3 class="text-secondary">!No hay nada!, Comience Ahora</h3>
-}
+    <!-- GALERIA -->
+    <h2 class="text-center my-4" id="galeria1">Galería de Espacios</h2>
 
-<table class="table">
-    <tr>
-        <th hidden>
-            @Html.DisplayNameFor(model => model.EspacioID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoriaID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Capacidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UbicacionEnlace)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estacionamiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sanitarios)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccesoSillaRuedas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagenPrev)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Disponible)
-        </th>
-        <th></th>
-    </tr>
+    <div class="galeria">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td hidden>
-                @Html.DisplayFor(modelItem => item.EspacioID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UbicacionEnlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estacionamiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sanitarios)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccesoSillaRuedas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagenPrev)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Disponible)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Update", new { id = item.EspacioID }, new {@class="btn btn-warning"}) |
-                @Html.ActionLink("Details", "Details" /*, new { id = item.EspacioID }*/,null, new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.EspacioID }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+        <div class="item">
+            <img src="~/Content/Uploads/Espacios/Images/Lab.jpg" class="img-fluid rounded shadow">
+            <p>Laboratorios</p>
+        </div>
+
+        <div class="item">
+            <img src="~/Content/Uploads/Espacios/Images/classroom.jpg" class="img-fluid rounded shadow">
+            <p>Aulas y Salones</p>
+        </div>
+    </div>
+    <!-- Fin Galería -->
+    <!-- Sobre nosotros -->
+    <section class="hero1">
+        <div class="contenido-hero">
+            <h2>SOBRE <span>NOSOTROS</span></h2>
+
+            @*<img src="~/Content/Uploads/Espacios/Images/background.png" />*@
+
+            <p>En DEVELO₱ERS nos especializamos en la gestión eficiente de espacios académicos como aulas de clases y laboratorios. Nuestro sistema permite administrar reservas por día y hora, controlar la disponibilidad en tiempo real y generar reportes detallados de uso, facilitando la toma de decisiones y optimizando el aprovechamiento de cada espacio.</p>
+            <a class="btn btn-primary" href="#galeria1">VER</a>
+        </div>
+    </section>
+    <!-- Fin sección sobre nosotros -->
+
+    <!-- Mapa -->
+
+    <h2 class="text-center my-4" id="galeria1">Donde Estamos</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d289.2608727444183!2d-89.24279806517345!3d13.70883129889196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2ssv!4v1760220859186!5m2!1ses-419!2ssv" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+    <!-- Fin Mapa -->
+</main>
+
+<!-- Estilo CSS Embebido -->
+<style>
+    /* Galería */
+    .galeria {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
     }
 
+        .galeria .item {
+            text-align: center;
+        }
 
-</table>
+        .galeria p {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+    @@media (min-width: 768px) {
+        .galeria {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Hero */
+    .hero {
+        background-image: url('/Content/Uploads/Espacios/Images/Fondo.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 425px;
+        width: 100%;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .hero1 {
+        background-image: url('/Content/Uploads/Espacios/Images/background.png');
+        background-size: cover;
+        background-position: center;
+        height: 425px;
+        width: 100%;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .contenido-hero {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0 0 0 / 65%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+        .contenido-hero h2 {
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        .contenido-hero span {
+            color: #0d6efd; /* azul Bootstrap */
+        }
+
+        .contenido-hero p {
+            color: #e0e0e0;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+</style>

@@ -52,6 +52,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.3.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.3.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -197,6 +203,16 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Uploads\Espacios\Images\auditorio.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\background.png" />
+    <Content Include="Content\Uploads\Espacios\Images\classroom.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\estadio.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\Fondo.jpeg" />
+    <Content Include="Content\Uploads\Espacios\Images\icon.png" />
+    <Content Include="Content\Uploads\Espacios\Images\icon32.png" />
+    <Content Include="Content\Uploads\Espacios\Images\Lab.jpg" />
+    <Content Include="Content\Uploads\Espacios\Images\logo_compan.png" />
+    <Content Include="Content\Uploads\Espacios\Images\ReservaYaLogo.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -250,11 +266,11 @@
     <Content Include="Views\GestionEspacios\CreateAddImages.cshtml" />
     <Content Include="Views\GestionEspacios\Update.cshtml" />
     <Content Include="Views\GestionEspacios\Delete.cshtml" />
+    <Content Include="Views\GestionEspacios\Homepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploads\Espacios\Docs\" />
-    <Folder Include="Content\Uploads\Espacios\Images\" />
     <Folder Include="Content\Uploads\Espacios\Videos\" />
   </ItemGroup>
   <ItemGroup>

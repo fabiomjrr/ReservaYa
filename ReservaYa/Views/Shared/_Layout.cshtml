@@ -3,31 +3,81 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="icon" type="image/x-icon" href="~/Content/Uploads/Espacios/Images/icon32.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>@ViewBag.Title - ReservaYa</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <!-- Logo -->
+            <img src="~/Content/Uploads/Espacios/Images/icon32.png" />
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>                    
+                <!-- Contenido izquierda-->
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Haz tu reserva", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+
+                <!-- Contenido derecha -->
+                <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+                    <li>@Html.ActionLink("Iniciar Sesión", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Crear cuenta nueva", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="bg-dark text-light pt-5 pb-3 mt-5">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Logo / Nombre -->
+                    <div class="col-md-4 mb-4">
+                        <h3 class="fw-bold text-uppercase">DEVELO₱ERS</h3>
+                        <p class="text-muted">Reserva Inteligente, Espacios Eficientes, tales como Salones educativos y Laboratorios Informáticos</p>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="fw-bold">Enlaces</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="/Default.aspx" class="text-light text-decoration-none">Inicio</a></li>
+                            <li><a href="/ReservarLabs.aspx" class="text-light text-decoration-none">Haz tu reserva</a></li>
+
+                        </ul>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="col-md-4 mb-4">
+                        <h5 class="fw-bold">Contáctanos</h5>
+                        <p class="mb-1"><i class="bi bi-envelope"></i> reservaya34@gmail.com</p>
+                        <p class="mb-1"><i class="bi bi-telephone"></i>+503 6023-8774</p>
+                        <div class="d-flex gap-3 mt-3">
+                            <a href="https://www.facebook.com/profile.php?id=61582322333145" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+                            <a href="https://reservaya.uy/" class="text-light fs-5"><i class="bi bi-twitter"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-secondary">
+                <div class="text-center text-muted">
+                    <small>&copy; 2025 DEVELO₱ERS. Todos los derechos reservados.</small>
+                </div>
+            </div>
         </footer>
+
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")
