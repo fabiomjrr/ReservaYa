@@ -138,6 +138,7 @@
     <Compile Include="Controllers\EspaciosController.cs" />
     <Compile Include="Controllers\EspaciosDetallesController.cs" />
     <Compile Include="Controllers\GestionEspaciosController.cs" />
+    <Compile Include="Controllers\GestionReservasController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReservaEspacioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,6 +160,7 @@
     <Compile Include="Models\FechasOcupadas.cs">
       <DependentUpon>miModelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GestionReservasViewModel.cs" />
     <Compile Include="Models\miModelo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -286,6 +288,7 @@
     <Content Include="Views\Espacios\Reserve.cshtml" />
     <Content Include="Views\EspaciosDetalles\Mostrar.cshtml" />
     <Content Include="Views\ReservaEspacio\ReservaEspacioVista.cshtml" />
+    <Content Include="Views\GestionReservas\MisReservas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

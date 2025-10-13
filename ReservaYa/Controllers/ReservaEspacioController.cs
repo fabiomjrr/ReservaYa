@@ -3,15 +3,16 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using ReservaYa.Models;
+using System.Data.Entity; 
+using System.Threading.Tasks;
 
 namespace ReservaYa.Controllers
 {
     public class ReservaEspacioController : Controller
     {
-        // 1. Instancia del contexto de Entity Framework
         private DEVELOSERSEntities db = new DEVELOSERSEntities();
 
-        // Función auxiliar para cargar las tarjetas de espacios (SÍNCRONA)
+        // Función auxiliar para cargar las tarjetas de espacios
         private List<ReservaEspaciosModelo.EspacioCard> CargarEspaciosDisponibles()
         {
             return db.Espacios
@@ -29,14 +30,12 @@ namespace ReservaYa.Controllers
         // Acción GET: Muestra el formulario de reserva
         public ActionResult ReservaEspacioVista()
         {
-            // Verificación de sesión para redirigir al Login
             if (Session["UsuarioID"] == null)
             {
                 return RedirectToAction("Login", "Login");
             }
 
             var espacios = CargarEspaciosDisponibles();
-
             var viewModel = new ReservaEspaciosModelo
             {
                 EspaciosDisponibles = espacios
@@ -59,12 +58,10 @@ namespace ReservaYa.Controllers
             if (!modelo.EspacioIDSeleccionado.HasValue || !ModelState.IsValid)
             {
                 modelo.EspaciosDisponibles = CargarEspaciosDisponibles();
-
                 if (!modelo.EspacioIDSeleccionado.HasValue)
                 {
                     ModelState.AddModelError("", "Debe seleccionar un espacio de la lista inferior.");
                 }
-
                 return View("ReservaEspacioVista", modelo);
             }
 
@@ -72,7 +69,7 @@ namespace ReservaYa.Controllers
             {
                 decimal duracionHoras = 2.0m; // Duración fija
 
-                // 1. OBTENER VALOR POR HORA
+                // 1. OBTENER VALOR POR HORA (Se mantiene)
                 var detalle = db.EspaciosDetalles
                     .FirstOrDefault(d => d.EspacioID == modelo.EspacioIDSeleccionado);
 
@@ -83,35 +80,47 @@ namespace ReservaYa.Controllers
 
                 decimal montoTotal = detalle.ValorPorHora * duracionHoras;
 
-                // 2. CREAR REGISTRO DE FECHA OCUPADA
-                var nuevaFechaOcupada = new FechasOcupadas
+                // A) CREAR Y GUARDAR EL REGISTRO DE FECHA DISPONIBLE (El slot de tiempo)
+                var nuevaFecha = new FechasDisponibles 
                 {
                     Fecha = modelo.Fecha,
                     HoraInicio = modelo.Hora,
                     HoraFin = modelo.Hora.Add(TimeSpan.FromHours((double)duracionHoras)),
-                    Activa = true
+                    
                 };
-                db.FechasOcupadas.Add(nuevaFechaOcupada);
-                db.SaveChanges();
+                db.FechasDisponibles.Add(nuevaFecha);
+                db.SaveChanges(); // CLAVE 1: Asigna nuevaFecha.FechaDisponibleID
 
-                // 3. CREAR LA RESERVA FINAL
+                int fechaDisponibleId = nuevaFecha.FechaDisponibleID;
+
+
+                // B) CREAR Y GUARDAR EL REGISTRO INTERMEDIO (ReservasFechasDisponibles)
+                var nuevaReservaFecha = new ReservasFechasDisponibles
+                {
+                    EspacioID = modelo.EspacioIDSeleccionado.Value,
+                    FechaDisponibleID = fechaDisponibleId
+                };
+                db.ReservasFechasDisponibles.Add(nuevaReservaFecha);
+                db.SaveChanges(); // CLAVE 2: Asigna nuevaReservaFecha.ReservaFechaID
+
+                int reservaFechaIdGenerado = nuevaReservaFecha.ReservaFechaID;
+
+
+                // C) CREAR LA RESERVA FINAL
                 var nuevaReserva = new Reservas
                 {
                     UsuarioID = usuarioId.Value,
                     MontoTotal = montoTotal,
-                    FechaOcupadaID = nuevaFechaOcupada.FechaOcupadaID,
-                    ReservaFechaID = null // Ignoramos la FK problemática
+                 
+                    ReservaFechaID = reservaFechaIdGenerado
                 };
                 db.Reservas.Add(nuevaReserva);
                 db.SaveChanges(); // Guarda la reserva final
 
                 // ----------------------------------------------------
-                // *** REDIRECCIÓN A GESTIÓN DE RESERVAS 
+                // REDIRECCIÓN FINAL
                 // ----------------------------------------------------
-                
                 return RedirectToAction("MisReservas", "GestionReservas");
-                // Si quieres que vaya al índice: 
-                // return RedirectToAction("Index", "GestionReservas");
             }
             catch (Exception ex)
             {
