@@ -8,20 +8,35 @@
 <p>@Model.Espacio.Direccion</p>
 <p>Capacidad: @Model.Espacio.Capacidad</p>
 
-<h3>Fechas Disponibles</h3>
-<table class="table">
-    <thead>
-        <tr><th>Fecha</th><th>Hora Inicio</th><th>Hora Fin</th><th></th></tr>
-    </thead>
-    <tbody>
-        @foreach (var rf in Model.FechasDisponibles)
-        {
-            <tr>
-                <td>@rf.FechasDisponibles.Fecha.ToShortDateString()</td>
-                <td>@rf.FechasDisponibles.HoraInicio</td>
-                <td>@rf.FechasDisponibles.HoraFin</td>
-                <td>@Html.ActionLink("Reservar", "Reserve", new { reservaFechaId = rf.ReservaFechaID }, new { @class = "btn btn-success" })</td>
-            </tr>
-        }
-    </tbody>
-</table>
+@using (Html.BeginForm("QuickReserve", "Espacios", FormMethod.Post, new { @class = "row g-3 card shadow-sm mb-5 border-0 p-3" }))
+{
+    @Html.AntiForgeryToken()
+
+    @*@Html.Hidden("reservaFechaId",ViewBag.IdFechaDp)*@
+
+
+    <div class="col-md-6">
+        <label for="Cliente" class="form-label fw-semibold">Cliente</label>
+        <input type="text" name="Cliente" id="Cliente" class="form-control" placeholder="Nombre del cliente" />
+    </div>
+
+    <div class="col-md-6">
+        <label for="Fecha" class="form-label fw-semibold">Fecha</label>
+        <input type="date" name="Fecha" id="Fecha" class="form-control" />
+    </div>
+
+    <div class="col-md-6">
+        <label for="Hora" class="form-label fw-semibold">Hora</label>
+        <input type="time" name="Hora" id="Hora" class="form-control" />
+    </div>
+
+    <div class="col-md-6">
+        <label for="Personas" class="form-label fw-semibold">Personas</label>
+        <input type="number" name="Personas" id="Personas" class="form-control" placeholder="Cantidad de personas" min="1" />
+    </div>
+
+    <div class="col-12 text-end mt-3">
+        <button type="submit" class="btn btn-danger px-4">Guardar Reserva</button>
+    </div>
+
+}
