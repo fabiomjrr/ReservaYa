@@ -1,8 +1,7 @@
 ﻿@using ReservaYa.Models
-@model ReservaEspaciosModelo
-
+@model ReservaEspaciosModelo 
 @{
-    ViewBag.Title = "Reserva de Espacios";
+    ViewBag.Title = "Reserva de Espacios"; 
 }
 
 <div class="container my-5">
@@ -53,31 +52,34 @@
 
     <h2 class="mt-5 mb-3">Espacios Disponibles</h2>
     <div class="row">
-        @if (Model.EspaciosDisponibles != null)
-        {
-            foreach (var espacio in Model.EspaciosDisponibles)
-            {
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        @* La lógica de la imagen es mínima (solo la ruta) *@
-                        <img src="@Url.Content("~/Images/" + espacio.ImagenPrevUrl)" class="card-img-top" alt="@espacio.Nombre" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">@espacio.Nombre</h5>
-                            <p class="card-text text-muted">Capacidad: **@espacio.Capacidad personas**</p>
-                        </div>
-                        <div class="card-footer bg-light border-0">
-                            @* El botón solo guarda el ID y activa la UI con JavaScript *@
-                            <button type="button"
-                                    class="btn btn-sm btn-outline-danger btn-seleccionar-espacio w-100"
-                                    data-espacio-id="@espacio.EspacioID"
-                                    data-espacio-nombre="@espacio.Nombre">
-                                Seleccionar
-                            </button>
-                        </div>
-                    </div>
+       @if (Model.EspaciosDisponibles != null)
+{
+    foreach (var espacio in Model.EspaciosDisponibles)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+               
+                <img src="@Url.Content("~/Content/Images/" + espacio.ImagenPrevUrl)" 
+                     class="card-img-top" 
+                     alt="@espacio.Nombre" 
+                     style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@espacio.Nombre</h5>
+                    <p class="card-text text-muted">Capacidad: **@espacio.Capacidad personas**</p>
                 </div>
-            }
-        }
+                <div class="card-footer bg-light border-0">
+                    @* El botón solo guarda el ID y activa la UI con JavaScript *@
+                    <button type="button"
+                            class="btn btn-sm btn-outline-danger btn-seleccionar-espacio w-100"
+                            data-espacio-id="@espacio.EspacioID"
+                            data-espacio-nombre="@espacio.Nombre">
+                        Seleccionar
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+}
     </div>
 </div>
 
