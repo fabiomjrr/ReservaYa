@@ -1,0 +1,115 @@
+﻿@using ReservaYa.Models
+@model ReservaEspaciosModelo
+
+@{
+    ViewBag.Title = "Reserva de Espacios";
+}
+
+<div class="container my-5">
+    <h1 class="mb-4 text-center">¡Realiza tu reserva ya!</h1>
+
+    <div class="card p-4 mb-5 shadow border-danger">
+        @* El formulario se envía a la acción CrearReserva del controlador ReservaEspacio *@
+        @using (Html.BeginForm("CrearReserva", "ReservaEspacio", FormMethod.Post, new { @class = "row g-3" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @* Campo oculto para guardar el ID del espacio seleccionado, clave para el POST *@
+            @Html.HiddenFor(model => model.EspacioIDSeleccionado)
+
+            <div class="col-md-6">
+                <label class="form-label">Cliente</label>
+                <input type="text" class="form-control" value="@Session["NombreUsuario"]" disabled />
+            </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Fecha, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.Fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Hora, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.Hora, new { @class = "form-control", type = "time" })
+                @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Personas, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.Personas, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Personas, "", new { @class = "text-danger" })
+            </div>
+
+            @* Muestra mensajes de error generales, incluyendo errores de lógica de negocio (Ej: "Ya está reservado") *@
+            @Html.ValidationSummary(true, "", new { @class = "text-danger col-12" })
+
+            <div class="col-12 text-end mt-4">
+                <button type="submit" id="btnGuardarReserva" class="btn btn-danger btn-lg" disabled>
+                    Guardar Reserva
+                </button>
+            </div>
+        }
+    </div>
+
+    <h2 class="mt-5 mb-3">Espacios Disponibles</h2>
+    <div class="row">
+        @if (Model.EspaciosDisponibles != null)
+        {
+            foreach (var espacio in Model.EspaciosDisponibles)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        @* La lógica de la imagen es mínima (solo la ruta) *@
+                        <img src="@Url.Content("~/Images/" + espacio.ImagenPrevUrl)" class="card-img-top" alt="@espacio.Nombre" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@espacio.Nombre</h5>
+                            <p class="card-text text-muted">Capacidad: **@espacio.Capacidad personas**</p>
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            @* El botón solo guarda el ID y activa la UI con JavaScript *@
+                            <button type="button"
+                                    class="btn btn-sm btn-outline-danger btn-seleccionar-espacio w-100"
+                                    data-espacio-id="@espacio.EspacioID"
+                                    data-espacio-nombre="@espacio.Nombre">
+                                Seleccionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@section scripts {
+    @* Usa RenderPartial para incluir los scripts de validación de jQuery *@
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        document.querySelectorAll('.btn-seleccionar-espacio').forEach(button => {
+            button.addEventListener('click', function () {
+                const espacioId = this.getAttribute('data-espacio-id');
+                const espacioNombre = this.getAttribute('data-espacio-nombre');
+
+                // 1. Asigna el ID al campo oculto del modelo (Lógica de UI)
+                document.getElementById('EspacioIDSeleccionado').value = espacioId;
+
+                // 2. Habilita y actualiza el botón de guardar (Lógica de UI)
+                const btnReserva = document.getElementById('btnGuardarReserva');
+                btnReserva.disabled = false;
+                btnReserva.textContent = `Guardar Reserva para ${espacioNombre}`;
+
+                // 3. Resalta el botón seleccionado (Lógica de UI)
+                document.querySelectorAll('.btn-seleccionar-espacio').forEach(btn => {
+                    btn.classList.remove('btn-danger');
+                    btn.classList.add('btn-outline-danger');
+                });
+                this.classList.remove('btn-outline-danger');
+                this.classList.add('btn-danger');
+
+                // 4. Mueve la vista al formulario
+                document.querySelector('.card.p-4.mb-5').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+}
