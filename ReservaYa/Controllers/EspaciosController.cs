@@ -42,10 +42,7 @@ namespace ReservaYa.Controllers
 
 
             TempData["QuickReserveSuccess"] = $"Reserva provisional para {model.Cliente ?? "usuario"} en {model.Fecha:yyyy-MM-dd} {model.Hora}";
-<<<<<<< HEAD
-=======
 
->>>>>>> 278e1da4af9a7bcef2715545354b94f1c904469f
             return RedirectToAction("Index");
         }
 
