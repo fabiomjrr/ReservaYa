@@ -278,7 +278,7 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Espacios\Create.cshtml" />
     <Content Include="Views\Espacios\Delete.cshtml" />
-    <Content Include="Views\GestionEspacios\Details.cshtml" />
+    <Content Include="Views\Espacios\Details.cshtml" />
     <Content Include="Views\Espacios\Edit.cshtml" />
     <Content Include="Views\Espacios\Index.cshtml" />
     <Content Include="Views\Espacios\Reserve.cshtml" />
