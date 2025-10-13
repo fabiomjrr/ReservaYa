@@ -11,8 +11,7 @@ namespace ReservaYa.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +19,7 @@ namespace ReservaYa.Models
         {
             this.Reservas = new HashSet<Reservas>();
         }
-
-        //[Required]
+    
         public int UsuarioID { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }

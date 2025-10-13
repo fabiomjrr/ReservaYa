@@ -16,14 +16,14 @@ namespace ReservaYa
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "GestionEspacios", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Register", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Registro",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Registrarse", action = "Registro", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Registro",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Registrarse", action = "Registro", id = UrlParameter.Optional }
+            //);
         }
     }
 }
