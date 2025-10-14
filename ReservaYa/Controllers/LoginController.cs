@@ -47,7 +47,7 @@ namespace ReservaYa.Controllers
 
                 // *** REDIRECCIÓN***
                 // Acción: Homepage, Controlador: GestionEspacios
-                return RedirectToAction("Homepage", "GestionEspacios");
+                return RedirectToAction("Index", "GestionEspacios");
             }
 
             ViewBag.Mensaje = "Correo o contraseña incorrectos.";
