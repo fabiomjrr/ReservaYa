@@ -10,7 +10,7 @@ namespace ReservaYa.Controllers
 {
     public class GestionReservasController : Controller
     {
-        // Usa el nombre real de tu DbContext (Ejemplo: DEVELOSERSEntities)
+        
         private readonly DEVELOSERSEntities _context = new DEVELOSERSEntities();
 
         // ---------------------------------------------------------------------
@@ -31,7 +31,6 @@ namespace ReservaYa.Controllers
 
                     // 1. Unir Reserva con la tabla intermedia (ReservasFechasDisponibles)
                 join rfd in _context.ReservasFechasDisponibles
-                // Asegúrate de que los nombres de las propiedades ID sean correctos
                 on r.ReservaFechaID equals rfd.ReservaFechaID
 
                 // 2. Unir la tabla intermedia con Espacios
@@ -48,7 +47,7 @@ namespace ReservaYa.Controllers
                 select new ReservaUsuarioViewModel
                 {
                     ReservaID = r.ReservaID,
-                    NombreEspacio = e.Nombre, // Asegúrate que la columna se llame 'Nombre' en tu modelo Espacios
+                    NombreEspacio = e.Nombre, 
                     MontoTotal = r.MontoTotal,
                     FechaReserva = fd.Fecha,
                     HoraInicio = fd.HoraInicio,
