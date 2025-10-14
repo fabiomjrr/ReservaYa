@@ -135,6 +135,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EspaciosController.cs" />
+    <Compile Include="Controllers\EspaciosDetallesController.cs" />
+    <Compile Include="Controllers\GestionEspaciosController.cs" />
     <Compile Include="Controllers\GestionReservasController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReservaEspacioController.cs" />
@@ -191,6 +194,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DetailsEspacioService.cs" />
+    <Compile Include="ViewModels\EspacioDetailsViewModel.cs" />
+    <Compile Include="ViewModels\QuickReserveViewModel.cs" />
+    <Compile Include="ViewModels\ReservaCreateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -267,8 +273,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\GestionEspacios\Index.cshtml" />
+    <Content Include="Views\GestionEspacios\Create.cshtml" />
+    <Content Include="Views\GestionEspacios\Update.cshtml" />
+    <Content Include="Views\GestionEspacios\Delete.cshtml" />
+    <Content Include="Views\GestionEspacios\Homepage.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Espacios\Create.cshtml" />
+    <Content Include="Views\Espacios\Delete.cshtml" />
+    <Content Include="Views\Espacios\Details.cshtml" />
+    <Content Include="Views\Espacios\Edit.cshtml" />
+    <Content Include="Views\Espacios\Index.cshtml" />
+    <Content Include="Views\Espacios\Reserve.cshtml" />
+    <Content Include="Views\EspaciosDetalles\Mostrar.cshtml" />
     <Content Include="Views\ReservaEspacio\ReservaEspacioVista.cshtml" />
     <Content Include="Views\GestionReservas\MisReservas.cshtml" />
   </ItemGroup>
