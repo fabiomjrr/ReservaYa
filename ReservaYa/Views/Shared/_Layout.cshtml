@@ -23,9 +23,8 @@
                 <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                     <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Panel de Administrador", "Homepage", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
-
+                    <li>@Html.ActionLink("Gestiona tus reservas", "MisReservas", "GestionReservas", new { area = "" }, new { @class = "nav-link" })</li>
                     <!--Esta podria ser una vista intermedia y no la vista directa de creacion*-->
-
                     <!--Esta podria ser una vista intermedia y no la vista directa de creacion*-->
 
                     <li>@Html.ActionLink("Crea tu propio espacio", "Create", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
@@ -59,8 +58,13 @@
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold">Enlaces</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/Default.aspx" class="text-light text-decoration-none">Inicio</a></li>
-                        <li><a href="/ReservarLabs.aspx" class="text-light text-decoration-none">Haz tu reserva</a></li>
+                        <li>@Html.ActionLink("Home", "Index", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Panel de Administrador", "Homepage", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Gestiona tus reservas", "MisReservas", "GestionReservas", new { area = "" }, new { @class = "nav-link" })</li>
+                        <!--Esta podria ser una vista intermedia y no la vista directa de creacion*-->
+                        <!--Esta podria ser una vista intermedia y no la vista directa de creacion*-->
+
+                        <li>@Html.ActionLink("Crea tu propio espacio", "Create", "GestionEspacios", new { area = "" }, new { @class = "nav-link" })</li>
 
                     </ul>
                 </div>
