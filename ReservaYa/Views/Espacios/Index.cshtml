@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ReservaYa.Models.Espacios>
+
+@{
+    ViewBag.Title = "¡Realiza tu reserva ya!";
+}
+
+@functions {
+    private string GetImageFor(string nombre)
+    {
+        var logoPath = Url.Content("~/Content/Images/images.jpg");
+        if (string.IsNullOrWhiteSpace(nombre)) return logoPath;
+        var n = nombre.ToLowerInvariant();
+        if (n.Contains("aula")) return Url.Content("~/Content/Images/aula.jpg");
+        if (n.Contains("laboratorio")) return Url.Content("~/Content/Images/Lab.jpg");
+        if (n.Contains("estadio")) return Url.Content("~/Content/Images/estadio.jpg");
+        if (n.Contains("auditorio")) return Url.Content("~/Content/Images/auditorio.jpg");
+        if (n.Contains("salón") || n.Contains("salon")) return Url.Content("~/Content/Images/classroom.jpg");
+        return logoPath;
+    }
+}
+
+<div class="container mt-4">
+    <h2 class="text-center fw-bold mb-4">¡Realiza tu reserva ya!</h2>
+
+    @if (TempData["QuickReserveError"] != null)
+    {
+        <div class="alert alert-danger">@TempData["QuickReserveError"]</div>
+    }
+    @if (TempData["QuickReserveSuccess"] != null)
+    {
+        <div class="alert alert-success">@TempData["QuickReserveSuccess"]</div>
+    }
+
+  
+
+    <!-- LISTA DE ESPACIOS -->
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+        @foreach (var espacio in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="@GetImageFor(espacio.Nombre)"
+                         class="card-img-top"
+                         alt="@espacio.Nombre"
+                         style="height:200px; object-fit:cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">@espacio.Nombre</h5>
+                        <p class="card-text text-muted">Capacidad: @espacio.Capacidad personas</p>
+
+                       
+                        @using (Html.BeginForm("Details", "Espacios", FormMethod.Get))
+                        {
+                            @Html.Hidden("id", espacio.EspacioID)
+                            <button type="submit" class="btn btn-danger px-3">Seleccionar</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+    h2 {
+        color: #333;
+    }
+
+    .form-label {
+        color: #444;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+</style>
